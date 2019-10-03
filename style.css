@@ -44,6 +44,9 @@
   --illustrator: #ff0000;
   --pink: #b6009c;
   --white: #fff;
+  --yellow: #f9c900;
+  --item-text: #56658b;
+  --body: rgba(33,33,46,0.76);
 }
 
 * {
@@ -52,6 +55,17 @@
   box-sizing: border-box;
   font-family: 'Avenir Next';
 }
+
+body {
+  background-color: var(--body);
+  margin: 0;
+  padding: 20px 0 0 0;
+  color: #444444;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 13px;
+  line-height: 1.5em;
+}
+
 a {
   text-decoration: none;
 }
@@ -155,6 +169,147 @@ header .we-are h2 {
   font-weight: 600;
   line-height: 1.75;
   color: var(--pink);
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.technologies .item {
+    position: relative;
+    margin: 1.5% 1.5% .5%;
+    perspective: 50px;
+    font-family: Montserrat;
+    color: var(--white);
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.5em;
+}
+
+.technologies .item .item__wrapper {
+    width: 347px;
+    height: 206px;
+    transform-style: preserve-3d;
+    transition: all 1s ease;
+}
+
+.technologies .item:hover .item__wrapper {
+    transform: rotateY(180deg);
+}
+
+.technologies .item:hover .item__title {
+    color: #fff;
+}
+
+.technologies .item:hover .item__img img {
+    max-width: 0%;
+}
+
+.technologies .item__img {
+    position: absolute;
+    background: url(https://siteon.com.ua/packs/source/theme/assets/bg_grey_light-c50c35983688c32dd81ee995660440bb.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform-style: preserve-3d;
+    transform: translateZ(1px);
+    padding: 15px;
+}
+
+.technologies .item__img img {
+    z-index: 2;
+    transform: translateZ(60px) scale(.8);
+    max-width: 100%;
+}
+
+.technologies .item__text {
+    position: absolute;
+    background: var(--item-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 7px;
+    left: 51px;
+    right: 23px;
+    bottom: 21px;
+    transform-style: preserve-3d;
+    transform: translate3d(5px,-5px,-1px);
+}
+
+.technologies .item__text p {
+    z-index: 0;
+    transform: translateZ(-60px) scale(.8) rotateY(-180deg);
+}
+
+.technologies .item__title {
+    font-family: Montserrat;
+    color: var(--yellow);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.5em;
+    margin-top: 15px;
+    display: flex;
+    transition: color .5s ease;
+}
+
+.technologies .item__title span {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding-left: 44px;
+    margin-left: 45px;
+    width: 50%;
+}
+
+.technologies .item__title span:before {
+    content: "";
+    height: 1px;
+    width: 41px;
+    background: var(--item-text);
+    position: absolute;
+    left: 0;
+}
+
+.technologies .item__line, .technologies .item__line-1, .technologies .item__line-2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.technologies .item__line:after, .technologies .item__line-1:after, .technologies .item__line-2:after {
+    content: "";
+    width: 1px;
+    background: var(--item-text);
+    position: absolute;
+    height: 200px;
+    left: 0;
+    top: 50%;
+    z-index: -1;
+    transform: translateY(-50%);
+}
+
+.technologies .item__line-3, .technologies .item__line-4,.technologies .item__line-5 {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.technologies .item__line-3:after, .technologies .item__line-4:after, .technologies .item__line-5:after {
+    content: "";
+    width: 1px;
+    background: var(--item-text);
+    position: absolute;
+    height: 210px;
+    left: 0;
+    bottom: -12px;
+    z-index: -1;
 }
 
 
