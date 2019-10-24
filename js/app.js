@@ -29,5 +29,11 @@ $('#scrollTopBtn').click(function() {
 
 $(document).ready(() => {
   showText();
+
+  $('.images .image-items').slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 4
+  })
 })
 

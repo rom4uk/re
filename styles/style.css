@@ -1,0 +1,397 @@
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../fonts/AvenirNextCyr-UltraLight.eot');
+  src: url('../fonts/AvenirNextCyr-UltraLight.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/AvenirNextCyr-UltraLight.woff') format('woff'),
+  url('../fonts/AvenirNextCyr-UltraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../fonts/AvenirNextCyr-Regular.eot');
+  src: url('../fonts/AvenirNextCyr-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/AvenirNextCyr-Regular.woff') format('woff'),
+  url('../fonts/AvenirNextCyr-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../fonts/AvenirNextCyr-Demi.eot');
+  src: url('../fonts/AvenirNextCyr-Demi.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/AvenirNextCyr-Demi.woff') format('woff'),
+  url('../fonts/AvenirNextCyr-Demi.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('../fonts/AvenirNextCyr-Bold.eot');
+  src: url('../fonts/AvenirNextCyr-Bold.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/AvenirNextCyr-Bold.woff') format('woff'),
+  url('../fonts/AvenirNextCyr-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --logo: #666;
+  --title: #000;
+  --illustrator: #ff0000;
+  --pink: #B6009C;
+  --white: #fff;
+  --yellow: #f9c900;
+  --item-text: #56658b;
+  --body: rgba(33,33,46,0.76);
+  --toolpit: #70F1AE;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px 0 0 0;
+  color: #444444;
+  font-size: 13px;
+  font-family: 'Avenir Next', monospace;
+  line-height: 1.5em;
+}
+
+button {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+header {
+  margin: 64px 0 80px;
+}
+
+header .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header .logo {
+  margin-bottom: 104px;
+}
+
+header .logo a {
+  font-weight: 600;
+  color: var(--title);
+  font-size: 42px;
+  letter-spacing: 2px;
+}
+
+.header button {
+  border-radius: 8px;
+  width: 48px;
+  height: 32px;
+  text-transform: uppercase;
+  margin-left: 42px;
+}
+
+.header button:hover {
+  background-color: var(--toolpit);
+}
+
+.header button.active {
+  background-color: var(--toolpit);  
+}
+
+.we-are h2 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 55px;
+  color: var(--title);
+}
+
+.about .wrapper {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.about .about-items,
+.about .illustrator {
+  max-width: 46%;
+}
+
+.about .about-items {
+  color: var(--title);
+}
+
+.about .about-item {
+  padding-top: 80px;
+}
+
+.about .about-item h3 {
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.26;
+}
+
+.about .about-item .text {
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.about .about-item p {
+  margin-top: 16px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.about .about-item p .dotted {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-position: under;
+  text-decoration-color: var(--pink);
+  position: relative;
+}
+.about .about-item p .dotted .tooltip,
+.about .technologies .technologies-item figcaption {
+  display: none;
+  position: absolute;
+  background-color: var(--toolpit);
+  width: 350px;
+  transition: all .5s ease;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.about .about-item p .dotted .tooltip {
+  top: -129px;
+  left: -58px;
+  transform: translate(20px, -60px);
+}
+.about .about-item p .dotted .tooltip:before {
+  content: '';
+  border: 13px solid transparent;
+  border-top: 13px solid var(--toolpit);
+  position: absolute;
+  bottom: -15%;
+  left: 45px;
+}
+
+.about .about-item p .dotted:hover .tooltip{
+  display: block;
+  z-index: 10;
+}
+
+.about .technologies {
+  margin-top: 19px;
+  display: flex;
+}
+
+.about .technologies .technologies-item {
+  margin-right: 10px;
+}
+
+.about .technologies .technologies-item figure {
+  position: relative;
+}
+
+.about .technologies .technologies-item figcaption {
+  top: -129px;
+  left: -58px;
+}
+
+.about .technologies .technologies-item figcaption:before {
+  content: '';
+  border: 13px solid transparent;
+  border-top: 13px solid var(--toolpit);
+  position: absolute;
+  bottom: -22%;
+  left: 78px;
+}
+
+.about .technologies .technologies-item:first-child figcaption {
+  left: 0;
+}
+
+.about .technologies .technologies-item:first-child figcaption:before {
+  left: 20px;
+}
+
+.about .technologies .technologies-item img {
+  filter: grayscale(1);
+  border: 2px solid transparent;
+  width: 64px;
+  height: 64px;
+  border-radius: 24px;
+  padding: 10px;
+  transition: all .5s ease;
+}
+
+.about .technologies .technologies-item img:hover {
+  filter: none;
+  border-color: var(--pink)
+}
+
+.about .technologies .technologies-item img:hover + figcaption {
+  display: block;
+  z-index: 10;
+}
+
+.about .illustrator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-30deg);
+  font-size: 79px;
+  font-weight: bold;
+  color: var(--illustrator);
+}
+
+.image-items .image-item {  
+  color: var(--title);
+}
+
+.image-items .image-item .item-img img {
+  filter: grayscale(1);
+  transition: filter .5s ease;
+}
+
+.image-items .image-item .item-title {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 27px;
+}
+
+.image-items .image-item .item-text {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.image-items .image-item .item-link {
+  margin-top: 10px;
+}
+
+.image-items .image-item a {
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.image-items .image-item .item-img img:hover {
+  filter: none;
+}
+
+/*SLICK*/
+
+.slick-slide {
+  margin: 0 5px;
+}
+
+
+.jobs .job-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.jobs .wrapper {
+  padding-top: 80px;
+}
+
+.jobs h3 {
+  font-size: 39px;
+  font-weight: bold;
+  line-height: 1.26;
+  margin-bottom: 16px;
+  color: var(--title);
+}
+
+.job-items .job-item a {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.75;
+  color: var(--pink);
+}
+
+.rectangle {
+  background-color: #000000;
+  border-radius: 2px;
+  width: 4px;
+  height: 24px;
+}
+
+
+footer {
+  padding-top: 80px;
+}
+
+footer h3 {
+  margin-bottom: 9px;
+}
+
+footer form .item {
+  width: calc(100% / 12 * 6);
+  margin-bottom: 14px;
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+}
+
+footer form .item input {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--pink);
+  padding: 5px 10px;
+  width: 100%;
+}
+
+footer form .item label {
+  position: absolute;
+  bottom: 5px;
+}
+
+footer form .item input,
+footer form .item label {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--title);
+  transition: all .3s;
+}
+
+footer form .item input:focus ~ label {
+  bottom: 53px;
+  font-size: 14px;
+}
+
+footer form .item button {
+  padding: 13px 91px;
+  border: none;
+  outline: none;
+  border-radius: 32px;
+  background-color: var(--pink);
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2.33px;
+  color: var(--white);
+}
