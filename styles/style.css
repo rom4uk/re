@@ -273,7 +273,7 @@ header .logo a {
   color: var(--title);
 }
 
-.image-items .image-item .item-img img {
+.image-items .image-item .in-slider img {
   filter: grayscale(1);
   transition: filter .5s ease;
 }
@@ -299,7 +299,7 @@ header .logo a {
   font-weight: 700;
 }
 
-.image-items .image-item .item-img img:hover {
+.image-items .image-item .in-slider img:hover {
   filter: none;
 }
 
@@ -315,7 +315,6 @@ header .logo a {
   border-radius: 100%;
   width: 40px;
   height: 40px;
-  position: relative;
 }
 
 .slick-next:after {
