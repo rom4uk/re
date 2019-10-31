@@ -81,6 +81,10 @@ a {
   text-decoration: none;
 }
 
+.blured {
+  filter: blur(4px);
+}
+
 .wrapper {
   max-width: 1160px;
   margin: 0 auto;
@@ -269,8 +273,18 @@ header .logo a {
   color: var(--illustrator);
 }
 
-.image-items .image-item {  
+
+
+.image-items {
+  z-index: 1000;
+}
+
+.image-items .image-item {
   color: var(--title);
+}
+
+.on-slider {
+  display: none;
 }
 
 .image-items .image-item .in-slider img {
@@ -303,6 +317,19 @@ header .logo a {
   filter: none;
 }
 
+.slide .slider-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.slide .slick-next {
+  right: 50%;
+}
+
 /*SLICK*/
 
 .slick-slide {
@@ -315,6 +342,7 @@ header .logo a {
   border-radius: 100%;
   width: 40px;
   height: 40px;
+  transition: all .5s ease;
 }
 
 .slick-next:after {
@@ -338,6 +366,13 @@ header .logo a {
   background: #70F1AE;
 }
 
+.image-item.slick-slide.slick-current .on-slider{
+  opacity: 1;
+}
+/* image-item slick-slide slick-active */
+.image-item.slick-slide .on-slider{
+  opacity: 0.5;
+}
 
 .jobs .job-items {
   display: flex;

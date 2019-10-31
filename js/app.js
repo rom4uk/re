@@ -14,14 +14,83 @@ $(document).ready(() => {
 
   const slideIn = document.querySelectorAll('.images .image-items .in-slider');
   const slideOn = document.querySelectorAll('.images .image-items .on-slider');
-  hide(slideOn);
+  const header = document.querySelector('header');
+  const weAre = document.querySelector('main .we-are');
+  const about = document.querySelector('main .about');
+  const jobs = document.querySelector('main .jobs');
+  const footer = document.querySelector('footer');
+  const blured = [header, weAre, about, jobs, footer];
+  let clicked;
+
   slideIn.forEach(item => {
     item.addEventListener('click', () => {
+      clicked = true;
+      // blured
       console.log('click');
       hide(slideIn, 500);
       show(slideOn, 500);
+      document.body.classList.add('slide');
+      const overlay = document.querySelector('.slide .slider-overlay');
+      const heightTop = window.pageYOffset;
+      const heightBottom = 1;
+      console.log(heightTop, heightBottom);
+      overlay.style.height = `${document.body.clientHeight}px`;
+      bluring(blured);
+      header.classList.add('blured');
+      weAre.classList.add('blured');
+      about.classList.add('blured');
+      jobs.classList.add('blured');
+      footer.classList.add('blured');
+      console.log(slideOn.clientTop);
+
+      overlay.addEventListener('click', (e) => {
+        console.log('e.target', e.target, overlay);
+        hideOverlay(e, overlay);
+        clicked = !clicked;
+      })
+
+      $('.slide .slider-overlay').on('scroll', function () {
+        alert('scrolling');
+      });
+
+      document.addEventListener('scroll', (e) => {
+        if(clicked) {
+          console.log(e)
+          console.log('e.target', e.target, overlay);
+          document.body.classList.remove('slide');
+          overlay.style.height = '0px';
+          hide(slideOn, 500);
+          show(slideIn, 500);
+          bluring(blured, false);
+          clicked = !clicked;
+        }
+      })
+
+      console.log('clicked', clicked);
     });
   })
+
+  const hideOverlay = (e, overlay) => {
+    if(e.target === overlay) {
+      document.body.classList.remove('slide');
+      overlay.style.height = '0px';
+      hide(slideOn, 500);
+      show(slideIn, 500);
+      bluring(blured, false);
+    }
+  }
+
+  function bluring(arr, add = true) {
+    if(add) {
+      arr.forEach(item => {
+        item.classList.add('blured');
+      })
+    } else {
+      arr.forEach(item => {
+        item.classList.remove('blured');
+      })
+    }
+  }
 
   function hide(arr, time) {
     arr.forEach(item => {
@@ -108,10 +177,7 @@ function fadeInForm(phone, message) {
 }
 
 function checkInpits(arr) {
-  const tooltips = document.querySelectorAll('footer .input-tooltip')
-  if(tooltips) {
-    tooltips.forEach(item=>item.remove());
-  }
+  removeTooltip()
   let errors = [];
   arr.forEach(item => {
     if(item.value === '') {
@@ -130,6 +196,13 @@ function checkInpits(arr) {
     }
   })
   return errors.length ? false : true;
+}
+
+function removeTooltip() {
+  const tooltips = document.querySelectorAll('footer .input-tooltip')
+  if(tooltips) {
+    tooltips.forEach(item=>item.remove());
+  }
 }
 
 document.querySelector('.another').addEventListener('click', ()=>fadeInForm(phone, message));
