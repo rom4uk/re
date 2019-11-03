@@ -8,12 +8,31 @@ $(document).ready(() => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    arrows: true
+    arrows: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          slidesToShow: 1
+        }
+      }
+    ]
   });
   $('.slick-prev').hide();
 
-  const slideIn = document.querySelectorAll('.images .image-items .in-slider');
-  const slideOn = document.querySelectorAll('.images .image-items .on-slider');
+  let slideIn;
+  let slideOn;
+  let overlay;
+  let images = $('.images .image-items');
+
   const header = document.querySelector('header');
   const weAre = document.querySelector('main .we-are');
   const about = document.querySelector('main .about');
@@ -22,62 +41,46 @@ $(document).ready(() => {
   const blured = [header, weAre, about, jobs, footer];
   let clicked;
 
-  slideIn.forEach(item => {
-    item.addEventListener('click', () => {
-      clicked = true;
-      // blured
-      console.log('click');
-      hide(slideIn, 500);
-      show(slideOn, 500);
-      document.body.classList.add('slide');
-      const overlay = document.querySelector('.slide .slider-overlay');
-      const heightTop = window.pageYOffset;
-      const heightBottom = 1;
-      console.log(heightTop, heightBottom);
-      overlay.style.height = `${document.body.clientHeight}px`;
-      bluring(blured);
-      header.classList.add('blured');
-      weAre.classList.add('blured');
-      about.classList.add('blured');
-      jobs.classList.add('blured');
-      footer.classList.add('blured');
-      console.log(slideOn.clientTop);
+  images.on('click', '.slick-slide .in-slider', twoSlides);
 
-      overlay.addEventListener('click', (e) => {
-        console.log('e.target', e.target, overlay);
-        hideOverlay(e, overlay);
-        clicked = !clicked;
-      })
-
-      $('.slide .slider-overlay').on('scroll', function () {
-        alert('scrolling');
-      });
-
-      document.addEventListener('scroll', (e) => {
-        if(clicked) {
-          console.log(e)
-          console.log('e.target', e.target, overlay);
-          document.body.classList.remove('slide');
-          overlay.style.height = '0px';
-          hide(slideOn, 500);
-          show(slideIn, 500);
-          bluring(blured, false);
-          clicked = !clicked;
-        }
-      })
-
-      console.log('clicked', clicked);
-    });
-  })
-
-  const hideOverlay = (e, overlay) => {
-    if(e.target === overlay) {
+  function hideOnScroll(overlay) {
+    if(clicked) {
+      $('.images .image-items').slick('slickSetOption', {
+        slidesToShow: 4
+      }, true);
       document.body.classList.remove('slide');
       overlay.style.height = '0px';
+      slideIn = document.querySelectorAll('.images .image-items .slick-slide .in-slider');
+      slideOn = document.querySelectorAll('.images .image-items .slick-slide .on-slider');
       hide(slideOn, 500);
       show(slideIn, 500);
       bluring(blured, false);
+      clicked = !clicked;
     }
+  }
+
+  function twoSlides() {
+    clicked = true; 
+    $('.images .image-items').slick('slickSetOption', {
+      slidesToShow: 2
+    }, true);
+    slideIn = document.querySelectorAll('.images .image-items .slick-slide .in-slider');
+    slideOn = document.querySelectorAll('.images .image-items .slick-slide .on-slider');
+    hide(slideIn, 500);
+    show(slideOn, 500);
+
+    document.body.classList.add('slide');
+    const overlay = document.querySelector('.slide .slider-overlay');
+    overlay.style.height = `${document.body.clientHeight}px`;
+    bluring(blured);
+
+    overlay.addEventListener('click', () => {
+      hideOnScroll(overlay);
+    })
+
+    document.addEventListener('scroll', () => {
+      hideOnScroll(overlay);
+    })
   }
 
   function bluring(arr, add = true) {
@@ -114,8 +117,6 @@ $(document).ready(() => {
       'slow'
     );
   });
-
-
 })
 
 function scrollFunction() {
@@ -134,10 +135,8 @@ formInputs.forEach((item, index) => {
 
   item.addEventListener('blur', checkInput);
 
-  item.addEventListener('input', ()=> {
-    if(this.value !== '') {
-      
-    }
+  item.addEventListener('input', function() {
+    typingInput(this);
   });
 })
 
@@ -151,6 +150,31 @@ function checkInput() {
   } else this.classList.remove('typed');
 }
 
+function typingInput(elem) {
+  try{
+    if(elem.parentElement.querySelector('.input-tooltip')) {
+      elem.parentElement.querySelector('.input-tooltip').remove();
+      elem.classList.remove('invalid');
+    }
+  }
+  catch(err) {
+    console.log(err);
+  }
+}
+
+function removeInvalidTooltip(event) {
+  if(event.target !== document.querySelector('footer form .phone input') && event.target !== document.querySelector('footer form .message input')) {
+    const tooltips = document.querySelectorAll('.input-tooltip');
+    tooltips.forEach(item => {
+      item.parentElement.querySelector('input').classList.remove('invalid');
+      item.remove();
+    });
+  }
+
+}
+
+document.addEventListener('click', removeInvalidTooltip);
+
 let timerId;
 const phone = document.querySelector('footer form #phone');
 const message = document.querySelector('footer form #message');
@@ -159,7 +183,7 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   let isValid = checkInpits(formInputs);
   if(isValid) {
-    /* send message than hide form*/
+    /* send the message than hide the form */
     $(e.currentTarget).fadeOut(500, () => {
       $('.after-subm').fadeIn(500, () => {
         timerId = setTimeout(()=> fadeInForm(phone, message), 3000);
@@ -185,11 +209,9 @@ function checkInpits(arr) {
       div.classList.add('input-tooltip');
       div.innerText = `Did you forget?`;
       item.parentNode.insertAdjacentElement('beforeend', div);
-      console.log(item.parentNode);
       item.classList.add('typed');
       item.classList.add('invalid');
       item.focus();
-      console.log(item, 'focused');
       errors.push(1);
     } else {
       item.classList.remove('invalid');
@@ -206,3 +228,91 @@ function removeTooltip() {
 }
 
 document.querySelector('.another').addEventListener('click', ()=>fadeInForm(phone, message));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ________________________________________________________________________________________ */
+/* getters, setters */
+
+function EmailParser(email) {
+  this.email = email;
+  
+  Object.defineProperty(this, 'name', {
+    get: function() {
+      return this.isCorrect ? this.email.split('@')[0] : null;
+    }
+  });
+
+  Object.defineProperty(this, 'domain', {
+    get: function() {
+      return this.isCorrect ? this.email.split('@')[1] : null;
+    }
+  });
+
+  Object.defineProperty(this, 'isCorrect', {
+    get: function() {
+      return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+[^<>()\.,;:\s@\"]{2,})$/.test(this.email);
+    }
+  });
+}
+
+const obj = new EmailParser('info@gmail.com');
+
+console.log(obj.name);
+console.log(obj.domain);
+console.log(obj.isCorrect);
+
+obj.email = 'some@nz';
+console.log(obj.name);
+console.log(obj.domain);
+console.log(obj.isCorrect);
+
+/* getters, setters with Proxy */
+
+const div = document.createElement('div');
+//document.body.appendChild(div);
+
+const watchObj = function(elem, func) {
+  return new Proxy(elem, {
+    get(target, name) {
+      switch (typeof target[name]) {
+        case('object'):
+          return watchObj(target[name], func);
+        case('function'):
+          return target[name].bind(target);
+        default:
+          return target[name];
+      }
+    },
+    set(target, name, val) {
+      target[name] = val;
+      func(name, val);
+      return true;
+    }
+  })
+}
+
+let cleverDiv = watchObj(div, function(prop, value) {
+  console.log(prop, value);
+})
+
+cleverDiv.innerHTML = `<strong>HTML</strong><em>Changed</em>`;
+
+cleverDiv.style.color = 'red';
+
+cleverDiv.querySelector('em').style.color = 'green';
