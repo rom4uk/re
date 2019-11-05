@@ -115,29 +115,18 @@ function scrollFunction() {
   }
 }
 
-/*
-  3-c-128199-31 vid 25-10-2019
-  2975776
-  2975829 - 
-  Дубиняк віктор
-  2611047
-  2611049
-  
-  2611036
-  2546601
-  2546605
-  очерклевич олена головний спеціальст відділу організаційної роботи
-*/
-
-var textarea = document.querySelector('textarea');
-
+const textarea = document.querySelector('textarea');
 textarea.addEventListener('keydown', autosize);
-             
+
 function autosize(){
-  var el = this;
+  const el = this;
     setTimeout(function(){
+      el.style.cssText = 'height: auto';
       if(el.getBoundingClientRect().height < el.scrollHeight) {
         el.style.cssText = 'height:' + el.scrollHeight + 'px';
+       }
+       if(el.value == '') {
+        el.removeAttribute('style');
        }
     },0);
 }
@@ -162,7 +151,9 @@ function addTyped() {
 function checkInput() {
   if(this.value !== '') {
     this.classList.add('typed');
-  } else this.classList.remove('typed');
+  } else {
+    this.classList.remove('typed');
+  }
 }
 
 function typingInput(elem) {
