@@ -9,24 +9,10 @@ $(document).ready(() => {
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          slidesToShow: 1
-        }
-      }
-    ]
+    focusOnSelect: true,
+    pauseOnFocus: false
   });
-  $('.slick-prev').hide();
+
 
   let slideIn;
   let slideOn;
@@ -60,6 +46,8 @@ $(document).ready(() => {
   }
 
   function twoSlides() {
+    console.log('this', this);
+    var slideno = $(this).data('slick-index');
     clicked = true; 
     $('.images .image-items').slick('slickSetOption', {
       slidesToShow: 2
@@ -127,8 +115,35 @@ function scrollFunction() {
   }
 }
 
-/*3-c-128199-31 vid 25-10-2019*/
-const formInputs = document.querySelectorAll('footer form .item input');
+/*
+  3-c-128199-31 vid 25-10-2019
+  2975776
+  2975829 - 
+  Дубиняк віктор
+  2611047
+  2611049
+  
+  2611036
+  2546601
+  2546605
+  очерклевич олена головний спеціальст відділу організаційної роботи
+*/
+
+var textarea = document.querySelector('textarea');
+
+textarea.addEventListener('keydown', autosize);
+             
+function autosize(){
+  var el = this;
+    setTimeout(function(){
+      if(el.getBoundingClientRect().height < el.scrollHeight) {
+        el.style.cssText = 'height:' + el.scrollHeight + 'px';
+       }
+    },0);
+}
+
+
+const formInputs = document.querySelectorAll('footer form .item .inputed');
 const form = document.querySelector('footer form[name="contact"]');
 formInputs.forEach((item, index) => {
   item.addEventListener('focus', addTyped);
@@ -166,7 +181,7 @@ function removeInvalidTooltip(event) {
   if(event.target !== document.querySelector('footer form .phone input') && event.target !== document.querySelector('footer form .message input')) {
     const tooltips = document.querySelectorAll('.input-tooltip');
     tooltips.forEach(item => {
-      item.parentElement.querySelector('input').classList.remove('invalid');
+      item.parentElement.querySelector('.inputed').classList.remove('invalid');
       item.remove();
     });
   }
@@ -197,11 +212,13 @@ function fadeInForm(phone, message) {
   clearTimeout(timerId);
   phone.value = '';
   message.value = '';
+  phone.classList.remove('typed');
+  message.classList.remove('typed');
   $('.after-subm').fadeOut(500, ()=> $(document.forms[0]).fadeIn(500));
 }
 
 function checkInpits(arr) {
-  removeTooltip()
+  removeTooltip();
   let errors = [];
   arr.forEach(item => {
     if(item.value === '') {

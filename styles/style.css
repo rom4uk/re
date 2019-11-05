@@ -427,7 +427,7 @@ header .logo a {
   position: absolute;
   width: 15px;
   height: 15px;
-  background-image: url('../img/html5.svg');
+  background-image: url('../img/Outbound.svg');
   background-position: left center;
   background-size: cover;
   right: -20px;
@@ -449,12 +449,13 @@ footer form .item {
   width: calc(100% / 12 * 6);
   margin-bottom: 59px;
   position: relative;
-  height: 80px;
+  /* height: 80px; */
   display: flex;
   align-items: flex-end;
 }
 
-footer form .item input {
+footer form .item input,
+footer form .item textarea {
   border: none;
   outline: none;
   border: 1px solid var(--inputBorder);
@@ -464,11 +465,18 @@ footer form .item input {
   font-size: 18px;
   font-weight: 600;
   line-height: 22px;
+  height: 75px;
+}
+
+footer form .item textarea {
+  resize: none;
+  display: block;
+  overflow: hidden;
 }
 
 footer form .item label {
   position: absolute;
-  bottom: 20px;
+  top: 30px;
   left: 24px;
   height: min-content;
   font-size: 22px;
@@ -476,11 +484,12 @@ footer form .item label {
   transition: all .3s;
 }
 
-footer form .item .input-tooltip {
+footer form .item .input-tooltip,
+footer form .textarea .input-tooltip {
   position: absolute;
   left: 110%;
   white-space: nowrap;
-  top: 34%;
+  top: 20%;
   padding: 10px 27px 14px 33px;
   background-color: var(--toolpit);
   border-radius: 25px;
@@ -498,24 +507,30 @@ footer form .item .input-tooltip:after {
   top: 20%;
 }
 
-footer form .item input:hover {
+footer form .item input:hover,
+footer form .item textarea:hover {
   border: 2px solid var(--title);
 }
 
-footer form .item input.invalid {
+footer form .item input.invalid,
+footer form .item textarea.invalid {
   box-shadow: 0 0 1px 2px var(--toolpit);
   border: 2px solid var(--title);
 }
 
 footer form .item input.typed:focus,
-footer form .item input.typed {
+footer form .item input.typed,
+footer form .item textarea.typed:focus,
+footer form .item textarea.typed {
   box-shadow: 0 0 1px 2px var(--toolpit);
   border: 2px solid var(--title);
 }
 
 footer form .item input.typed ~ label,
-footer form .item input.invalid ~ label {
-  bottom: 75px;
+footer form .item input.invalid ~ label,
+footer form .item textarea.typed ~ label,
+footer form .item textarea.invalid ~ label {
+  top: -30px;
   font-size: 14px;
 }
 
