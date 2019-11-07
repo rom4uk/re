@@ -61,7 +61,7 @@ body {
   margin: 0;
   padding: 20px 0 0 0;
   color: #444444;
-  font-size: 13px;
+  font-size: 18px;
   font-family: 'Avenir Next', monospace;
   line-height: 1.5em;
 }
@@ -137,7 +137,7 @@ header .logo a {
 }
 
 .we-are h2 {
-  font-size: 48px;
+  font-size: 2.7em;
   font-weight: 700;
   line-height: 55px;
   color: var(--title);
@@ -163,20 +163,15 @@ header .logo a {
 }
 
 .about .about-item h3 {
-  font-size: 26px;
+  font-size: 1.4em;
   font-weight: bold;
   line-height: 1.26;
-}
-
-.about .about-item .text {
-  font-size: 22px;
-  font-weight: normal;
 }
 
 .about .about-item p {
   margin-top: 16px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1em;
   line-height: 22px;
 }
 
@@ -307,13 +302,13 @@ header .logo a {
 }
 
 .image-items .image-item .item-title {
-  font-size: 22px;
+  font-size: 1.2em;
   font-weight: 600;
   line-height: 27px;
 }
 
 .image-items .image-item .item-text {
-  font-size: 18px;
+  font-size: 1em;
   font-weight: 400;
   line-height: 22px;
 }
@@ -409,7 +404,7 @@ header .logo a {
 }
 
 .jobs h3 {
-  font-size: 39px;
+  font-size: 2.1em;
   font-weight: bold;
   line-height: 1.26;
   margin-bottom: 16px;
@@ -421,7 +416,7 @@ header .logo a {
 }
 
 .job-items .job-item a {
-  font-size: 18px;
+  font-size: 1em;
   font-weight: 600;
   line-height: 27px;
   color: var(--pink);
@@ -449,7 +444,7 @@ footer {
 
 footer h3 {
   margin-bottom: 50px;
-  font-size: 26px;
+  font-size: 1.4em;
   font-weight: 700;
   line-height: 49px;
 }
@@ -471,7 +466,7 @@ footer form .item textarea {
   border-radius: 24px;
   padding: 20px 24px;
   width: 100%;
-  font-size: 18px;
+  font-size: 1em;
   font-weight: 600;
   line-height: 22px;
   height: 75px;
@@ -488,7 +483,7 @@ footer form .item label {
   top: 30px;
   left: 24px;
   height: min-content;
-  font-size: 22px;
+  font-size: 1.2em;
   font-weight: 400;
   transition: all .3s;
 }
@@ -502,7 +497,7 @@ footer form .textarea .input-tooltip {
   padding: 10px 27px 14px 33px;
   background-color: var(--toolpit);
   border-radius: 25px;
-  font-size: 16px;
+  font-size: 0.9em;
   font-weight: 700;
   line-height: 24px;
 }
@@ -540,7 +535,7 @@ footer form .item input.invalid ~ label,
 footer form .item textarea.typed ~ label,
 footer form .item textarea.invalid ~ label {
   top: -30px;
-  font-size: 14px;
+  font-size: 0.8em;
 }
 
 footer .after-subm {
@@ -548,7 +543,7 @@ footer .after-subm {
 }
 
 footer .after-subm .well {
-  font-size: 18px;
+  font-size: 1em;
   font-weight: 400;
   line-height: 22px;
   margin-bottom: 32px;
@@ -556,7 +551,7 @@ footer .after-subm .well {
 
 footer .after-subm .another {
   color: var(--pink);
-  font-size: 18px;
+  font-size: 1em;
   font-weight: 600;
   line-height: 27px;
   cursor: pointer;
@@ -569,7 +564,7 @@ footer form .item button {
   outline: none;
   border-radius: 32px;
   background-color: var(--pink);
-  font-size: 28px;
+  font-size: 1.6em;
   font-weight: bold;
   letter-spacing: 2.33px;
   color: var(--white);
