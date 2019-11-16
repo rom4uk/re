@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 59.1 (101010) - https://sketch.com -->
+    <title>290CFFD8-7CFE-4C6E-9845-A8B020FE4BB7</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="68.1884411%" y1="17.4868311%" x2="27.8226935%" y2="89.7551419%" id="linearGradient-1">
+            <stop stop-color="#41873F" offset="0%"></stop>
+            <stop stop-color="#418B3D" offset="32.88%"></stop>
+            <stop stop-color="#419637" offset="63.52%"></stop>
+            <stop stop-color="#3FA92D" offset="93.19%"></stop>
+            <stop stop-color="#3FAE2A" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="43.2803547%" y1="55.168777%" x2="159.183411%" y2="-18.3061379%" id="linearGradient-2">
+            <stop stop-color="#41873F" offset="13.76%"></stop>
+            <stop stop-color="#54A044" offset="40.32%"></stop>
+            <stop stop-color="#66B848" offset="71.36%"></stop>
+            <stop stop-color="#6CC04A" offset="90.81%"></stop>
+        </linearGradient>
+        <linearGradient x1="-4.38880435%" y1="49.9972065%" x2="101.499239%" y2="49.9972065%" id="linearGradient-3">
+            <stop stop-color="#6CC04A" offset="9.191646%"></stop>
+            <stop stop-color="#66B848" offset="28.64%"></stop>
+            <stop stop-color="#54A044" offset="59.68%"></stop>
+            <stop stop-color="#41873F" offset="86.24%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Glyphs/Competence/Node-JS">
+            <path d="M18.6428894,0.271747178 L3.07254176,9.25890746 C2.48079458,9.59176525 2.14793679,10.2204966 2.14793679,10.8862122 L2.14793679,28.8975169 C2.14793679,29.5632325 2.51777878,30.1919639 3.07254176,30.5248217 L18.6428894,39.5119821 C19.2346366,39.8448397 19.9373364,39.8448397 20.5290835,39.5119821 L36.099431,30.5248217 C36.6911782,30.1919639 37.0240362,29.5632325 37.0240362,28.8975169 L37.0240362,10.8862122 C37.0240362,10.2204966 36.6541942,9.59176525 36.099431,9.25890746 L20.5290835,0.271747178 C19.9373364,-0.0611106096 19.2346366,-0.0611106096 18.6428894,0.271747178 Z" id="Contour" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+            <path d="M2.53096311,30.0321975 L20.0113047,0.0868261856 C20.1099293,0.111482318 20.2249912,0.152575872 20.334574,0.199148566 L20.4920993,0.271747178 L28.3139631,4.76482619 L36.099431,9.25890746 C36.2654747,9.35853364 36.4149525,9.48466531 36.542906,9.63036088 L20.1129365,39.6868018 C19.6792355,39.8121323 19.2168018,39.7800149 18.7978268,39.5904495 L18.6428894,39.5119821 L3.07254176,30.5248217 C2.86201632,30.3985064 2.67812145,30.2295822 2.53096311,30.0321975 L20.0113047,0.0868261856 L2.53096311,30.0321975 Z" id="Path" fill="url(#linearGradient-2)" fill-rule="nonzero"></path>
+            <path d="M36.1733997,30.5248214 C36.6172099,30.2659322 36.9500678,29.8221219 37.0980045,29.3413274 L19.9373364,0.049841888 C19.493526,-0.024126528 19.0127314,0.012857664 18.6059052,0.271747072 L3.07254176,9.22192314 L19.8263837,39.7708714 C20.0482889,39.733887 20.3071783,39.6599187 20.5290835,39.5489661 L36.1733997,30.5248214 L36.1733997,30.5248214 Z" id="Path" fill="url(#linearGradient-3)"></path>
+        </g>
+    </g>
+</svg>

@@ -63,7 +63,6 @@ body {
   color: #444444;
   font-size: 18px;
   font-family: 'Avenir Next', monospace;
-  line-height: 1.5em;
 }
 
 button {
@@ -72,7 +71,6 @@ button {
   color: inherit;
   cursor: pointer;
   font: inherit;
-  line-height: normal;
   overflow: visible;
   padding: 0;
 }
@@ -105,16 +103,16 @@ header .logo {
 }
 
 header .logo a {
-  font-weight: 600;
-  color: var(--title);
-  font-size: 42px;
-  letter-spacing: 2px;
+  display: inline-block;
+}
+
+header .logo a:hover img{
+  filter: sepia(100%);
 }
 
 .header button {
   border-radius: 8px;
-  width: 48px;
-  height: 32px;
+  padding: 5px 10px;
   text-transform: uppercase;
   margin-left: 42px;
   border: 3px solid transparent;
@@ -125,7 +123,7 @@ header .logo a {
 }
 
 .header button.active {
-  background-color: var(--toolpit);  
+  background-color: var(--toolpit);
 }
 
 .header button a {
@@ -134,12 +132,14 @@ header .logo a {
   height: 100%;
   align-items: center;
   justify-content: center;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: var(--title);
 }
 
 .we-are h2 {
   font-size: 2.7em;
   font-weight: 700;
-  line-height: 55px;
   color: var(--title);
 }
 
@@ -165,14 +165,12 @@ header .logo a {
 .about .about-item h3 {
   font-size: 1.4em;
   font-weight: bold;
-  line-height: 1.26;
 }
 
 .about .about-item p {
   margin-top: 16px;
   font-weight: 400;
   font-size: 1em;
-  line-height: 22px;
 }
 
 .about .about-item p .dotted {
@@ -186,6 +184,7 @@ header .logo a {
 .about .technologies .technologies-item figcaption {
   display: none;
   position: absolute;
+  font-size: 0.9em;
   background-color: var(--toolpit);
   width: 350px;
   transition: all .5s ease;
@@ -193,11 +192,13 @@ header .logo a {
   padding: 10px 20px;
 }
 
+
 .about .about-item p .dotted .tooltip {
-  top: -129px;
+  top: -115px;
   left: -58px;
   transform: translate(20px, -60px);
 }
+
 .about .about-item p .dotted .tooltip:before {
   content: '';
   border: 13px solid transparent;
@@ -221,13 +222,37 @@ header .logo a {
   margin-right: 10px;
 }
 
+.about .technologies .technologies-item span {
+  font-weight: 700;
+}
+
 .about .technologies .technologies-item figure {
   position: relative;
 }
 
 .about .technologies .technologies-item figcaption {
-  top: -129px;
+  top: -175px;
   left: -58px;
+}
+
+.about .technologies .technologies-item figcaption.nodejs {
+  top: -273px;
+}
+
+.about .technologies .technologies-item figcaption.nodejs:before {
+  bottom: -8%;
+}
+
+.about .technologies .technologies-item figcaption.hotjar {
+  top: -197px;
+}
+
+.about .technologies .technologies-item figcaption.hotjar:before {
+  bottom: -13%;
+}
+
+.about .technologies .technologies-item figcaption.html5 {
+  top: -152px;
 }
 
 .about .technologies .technologies-item figcaption:before {
@@ -235,12 +260,13 @@ header .logo a {
   border: 13px solid transparent;
   border-top: 13px solid var(--toolpit);
   position: absolute;
-  bottom: -22%;
+  bottom: -14%;
   left: 78px;
 }
 
 .about .technologies .technologies-item:first-child figcaption {
   left: 0;
+  width: 450px;
 }
 
 .about .technologies .technologies-item:first-child figcaption:before {
@@ -266,6 +292,8 @@ header .logo a {
   display: block;
   z-index: 10;
 }
+/* 
+  width: 460px; */
 
 .about .illustrator {
   display: flex;
@@ -304,13 +332,11 @@ header .logo a {
 .image-items .image-item .item-title {
   font-size: 1.2em;
   font-weight: 600;
-  line-height: 27px;
 }
 
 .image-items .image-item .item-text {
   font-size: 1em;
   font-weight: 400;
-  line-height: 22px;
 }
 
 .image-items .image-item .item-link {
@@ -406,7 +432,6 @@ header .logo a {
 .jobs h3 {
   font-size: 2.1em;
   font-weight: bold;
-  line-height: 1.26;
   margin-bottom: 16px;
   color: var(--title);
 }
@@ -418,7 +443,6 @@ header .logo a {
 .job-items .job-item a {
   font-size: 1em;
   font-weight: 600;
-  line-height: 27px;
   color: var(--pink);
 }
 
@@ -446,7 +470,6 @@ footer h3 {
   margin-bottom: 50px;
   font-size: 1.4em;
   font-weight: 700;
-  line-height: 49px;
 }
 
 footer form .item {
@@ -468,7 +491,6 @@ footer form .item textarea {
   width: 100%;
   font-size: 1em;
   font-weight: 600;
-  line-height: 22px;
   height: 75px;
 }
 
@@ -499,7 +521,6 @@ footer form .textarea .input-tooltip {
   border-radius: 25px;
   font-size: 0.9em;
   font-weight: 700;
-  line-height: 24px;
 }
 
 footer form .item .input-tooltip:after {
@@ -545,7 +566,6 @@ footer .after-subm {
 footer .after-subm .well {
   font-size: 1em;
   font-weight: 400;
-  line-height: 22px;
   margin-bottom: 32px;
 }
 
@@ -553,7 +573,6 @@ footer .after-subm .another {
   color: var(--pink);
   font-size: 1em;
   font-weight: 600;
-  line-height: 27px;
   cursor: pointer;
   width: max-content;
 }
@@ -568,4 +587,24 @@ footer form .item button {
   font-weight: bold;
   letter-spacing: 2.33px;
   color: var(--white);
+}
+
+/* -------------------------------------------- */
+
+.theme-black {
+  background-color: #000;
+  color: #fff;
+}
+
+.theme-black a {
+  color: #fff;
+}
+
+.theme-white {
+  background-color: #fff;
+  color: #000;
+}
+
+.theme-white a {
+  color: #000;
 }

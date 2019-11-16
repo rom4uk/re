@@ -25,12 +25,14 @@ $(document).ready(() => {
   const jobs = document.querySelector('main .jobs');
   const footer = document.querySelector('footer');
   const blured = [header, weAre, about, jobs, footer];
-  let clicked;
+  let clicked, sliding;
 
   images.on('click', '.slick-slide .in-slider', twoSlides);
 
   function hideOnScroll(overlay) {
+    console.log('slideOn', slideOn);
     if(clicked) {
+      console.log('slideOn', slideOn);
       $('.images .image-items').slick('slickSetOption', {
         slidesToShow: 4
       }, true);
@@ -42,13 +44,19 @@ $(document).ready(() => {
       show(slideIn, 500);
       bluring(blured, false);
       clicked = !clicked;
+      sliding = !sliding;
     }
   }
 
   function twoSlides() {
     console.log('this', this);
-    var slideno = $(this).data('slick-index');
-    clicked = true; 
+    clicked = true;
+    sliding = true;
+    console.log('scrollTop', document.querySelector('.images .image-items').scrollTop);
+    console.log('scrollHeight', document.querySelector('.images .image-items').scrollHeight);
+    console.log('clientHeight', document.querySelector('.images .image-items').clientHeight);
+    console.log('pageYOffset', document.querySelector('.images .image-items').offsetHeight);
+
     $('.images .image-items').slick('slickSetOption', {
       slidesToShow: 2
     }, true);
@@ -67,9 +75,31 @@ $(document).ready(() => {
     })
 
     document.addEventListener('scroll', () => {
-      hideOnScroll(overlay);
+      if(sliding) {
+        let top = document.querySelector('.images .image-items').getBoundingClientRect().top;
+        let bottom = document.querySelector('.images .image-items').getBoundingClientRect().bottom;
+        console.log(top, bottom, window.innerHeight);
+        let innerHeight = window.innerHeight;
+        const num = innerHeight / 15;
+        console.log('num', num);
+        if(top < num ||  bottom > innerHeight) {
+          hideOnScroll(overlay);
+        }
+      }
     })
   }
+
+  /* if(sliding) {
+        let top = document.querySelector('.images .image-items').getBoundingClientRect().top;
+        let bottom = document.querySelector('.images .image-items').getBoundingClientRect().bottom;
+        console.log(top, bottom, window.innerHeight);
+        let innerHeight = window.innerHeight;
+        const num = innerHeight / 15;
+        console.log('num', num);
+        if(top < num ||  bottom > innerHeight) {
+          hideOnScroll(overlay);
+        }
+      } */
 
   function bluring(arr, add = true) {
     if(add) {
