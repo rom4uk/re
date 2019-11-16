@@ -146,7 +146,6 @@ header .logo a:hover img{
 .about .wrapper {
   display: flex;
   justify-content: space-between;
-  overflow: hidden;
 }
 
 .about .about-items,
@@ -299,7 +298,6 @@ header .logo a:hover img{
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: rotate(-30deg);
   font-size: 79px;
   font-weight: bold;
   color: var(--illustrator);
