@@ -1,7 +1,60 @@
+const technologies1 = [
+  {
+    name: 'react',
+    __html: '<span>React JS</span> is a JavaScript library for building user interfaces. It was created and is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications, as it is optimal for fetching rapidly changing data that needs to be recorded. More on <a target="_blank" href="https://en.wikipedia.org/wiki/React_(web_framework)">Wikipedia</a>.'
+  },
+  {
+    name: 'html5',
+    __html: '<span>HTML</span> and <span>CSS</span> – this is what each and every site is built with. An industry-default markup language and a stylesheet language used to describe the presentation of a document written in HTML or XML'
+  },
+  {
+    name: 'el',
+    __html: '<span>El</span> is an analysis and feedback platform built to help you understand your users better. It gives you the complete visibility and the big picture on how to leverage your website’s user experience and increase both performance and conversion rates.'
+  },
+  {
+    name: 'hotjar',
+    __html: ' <span>Hotjar</span> is an analysis and feedback platform built to help you understand your users better. It gives you the complete visibility and the big picture on how to leverage your website’s user experience and increase both performance and conversion rates. More on <a target="_blank" href="https://www.hotjar.com/blog/what-is-hotjar/">Hotjar</a>.'
+  },
+  {
+    name: 'php',
+    __html: '<span>PHP</span> is an analysis and feedback platform built to help you understand your users better. It gives you the complete visibility and the big picture on how to leverage your website’s user experience and increase both performance and conversion rates.'
+  },
+  {
+    name: 'nodejs',
+    __html: '<span>Node.js</span> lets front-end developers use JavaScript to write code for servers (back-end) w/o involving another language. It is an open-source, cross-platform environment, created by Ryan Dahl and maintained by a community of individual developers. It represents a "JavaScript everywhere" paradigm, unifying web-application development around a single programming language, rather than different languages for server- and client-side code.'
+  },
+];
+
 $(document).ready(() => {
 
+  const techItems = document.querySelectorAll('.technologies-item figure img');
+
+  /* techItems.forEach(item => {
+    item.addEventListener('mouseover', techItemEnter);
+    item.addEventListener('mouseleave', techItemLeave);
+  }); */
+
+  function techItemEnter(event) {
+    console.log(event.currentTarget);
+    const figcaption = event.currentTarget.parentElement.querySelector('figcaption');
+    const vw = window.innerWidth - 30;
+    figcaption.style.cssText = `width: ${vw}px`;
+    console.log(vw);
+    const vh = figcaption.scrollHeight + 40;
+    figcaption.style.cssText += `top: -${vh}px`;
+    console.log(vw, vh);
+  }
+
+  function techItemLeave(event) {
+    const figcaption = event.currentTarget.parentElement.querySelector('figcaption');
+    figcaption.removeAttribute('style');
+  }
+
+
   /* Slider */
-  $('.images .image-items').slick({
+  let images = $('.images .image-items');
+  images.slick({
+    rtl: false,
     autoplay: true,
     autoplaySpeed: 1500,
     infinite: true,
@@ -10,14 +63,29 @@ $(document).ready(() => {
     slidesToScroll: 1,
     arrows: true,
     focusOnSelect: true,
-    pauseOnFocus: false
+    pauseOnFocus: false,
+    responsive: [
+      {
+        breakpoint: 886,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 484,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      }
+    ]
   });
 
 
   let slideIn;
   let slideOn;
   let overlay;
-  let images = $('.images .image-items');
 
   const header = document.querySelector('header');
   const weAre = document.querySelector('main .we-are');
@@ -30,10 +98,8 @@ $(document).ready(() => {
   images.on('click', '.slick-slide .in-slider', twoSlides);
 
   function hideOnScroll(overlay) {
-    console.log('slideOn', slideOn);
     if(clicked) {
-      console.log('slideOn', slideOn);
-      $('.images .image-items').slick('slickSetOption', {
+      images.slick('slickSetOption', {
         slidesToShow: 4
       }, true);
       document.body.classList.remove('slide');
@@ -42,6 +108,7 @@ $(document).ready(() => {
       slideOn = document.querySelectorAll('.images .image-items .slick-slide .on-slider');
       hide(slideOn, 500);
       show(slideIn, 500);
+      images.removeAttr('style');
       bluring(blured, false);
       clicked = !clicked;
       sliding = !sliding;
@@ -52,13 +119,26 @@ $(document).ready(() => {
     console.log('this', this);
     clicked = true;
     sliding = true;
-    console.log('scrollTop', document.querySelector('.images .image-items').scrollTop);
-    console.log('scrollHeight', document.querySelector('.images .image-items').scrollHeight);
-    console.log('clientHeight', document.querySelector('.images .image-items').clientHeight);
-    console.log('pageYOffset', document.querySelector('.images .image-items').offsetHeight);
 
-    $('.images .image-items').slick('slickSetOption', {
-      slidesToShow: 2
+    images.slick('slickSetOption', {
+      slidesToShow: 2,
+      responsive: [
+        {
+          breakpoint: 886,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 484,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+          }
+        }
+      ]
     }, true);
     slideIn = document.querySelectorAll('.images .image-items .slick-slide .in-slider');
     slideOn = document.querySelectorAll('.images .image-items .slick-slide .on-slider');
@@ -68,6 +148,7 @@ $(document).ready(() => {
     document.body.classList.add('slide');
     const overlay = document.querySelector('.slide .slider-overlay');
     overlay.style.height = `${document.body.clientHeight}px`;
+    // images.css('transform', `translateY(-${window.innerHeight / 2.5}px)`);
     bluring(blured);
 
     overlay.addEventListener('click', () => {
@@ -88,18 +169,6 @@ $(document).ready(() => {
       }
     })
   }
-
-  /* if(sliding) {
-        let top = document.querySelector('.images .image-items').getBoundingClientRect().top;
-        let bottom = document.querySelector('.images .image-items').getBoundingClientRect().bottom;
-        console.log(top, bottom, window.innerHeight);
-        let innerHeight = window.innerHeight;
-        const num = innerHeight / 15;
-        console.log('num', num);
-        if(top < num ||  bottom > innerHeight) {
-          hideOnScroll(overlay);
-        }
-      } */
 
   function bluring(arr, add = true) {
     if(add) {
@@ -266,6 +335,41 @@ function removeTooltip() {
 }
 
 document.querySelector('.another').addEventListener('click', ()=>fadeInForm(phone, message));
+
+/* puzzle */
+function isPartiallyVisible(el) {
+    var elementBoundary = el.getBoundingClientRect();
+ 
+    var top = elementBoundary.top;
+    var bottom = elementBoundary.bottom;
+    var height = elementBoundary.height;
+ 
+    return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+}
+
+
+function isFullyVisible(el) {
+  var elementBoundary = el.getBoundingClientRect();
+ 
+  var top = elementBoundary.top;
+  var bottom = elementBoundary.bottom;
+ 
+  return ((top >= 0) && (bottom <= window.innerHeight));
+}
+
+const puzzle = document.querySelector('.puzzle');
+console.log('puzzle.clientY', puzzle.getBoundingClientRect().top + pageYOffset);
+const puzzleTop = puzzle.getBoundingClientRect().top + pageYOffset;
+const puzzles = document.querySelectorAll('.puzzle .puzzle-item');
+
+$(window).scroll(function() {
+  if(isFullyVisible(puzzle)) {
+    puzzles.forEach(item => item.classList.remove('moved'));
+  } 
+  if(!isPartiallyVisible(puzzle)) {
+    puzzles.forEach(item => item.classList.add('moved'))
+  }
+});
 
 
 

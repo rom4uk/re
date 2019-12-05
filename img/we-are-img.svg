@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="356px" height="139px" viewBox="0 0 356 139" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 60.1 (101010) - https://sketch.com -->
+    <title>9E99F67E-CB62-48E1-9492-139DF53E58C3</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="XS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Initial" transform="translate(-10.000000, -319.000000)" stroke="#000000" stroke-width="2">
+            <g id="Illustration-01" transform="translate(11.000000, 320.000000)">
+                <g id="Tetrahedron" transform="translate(307.000000, 86.000000)" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline id="Path-5" fill="#B6009C" points="0 5 24.5454545 0 46 17"></polyline>
+                    <polygon id="Triangle" fill="#FADA37" points="0 5 46.2902774 17.4693303 12.4813068 50.1182738"></polygon>
+                </g>
+                <line x1="0" y1="72.5" x2="157.5" y2="27.5" id="Line-01" stroke-linecap="round" stroke-linejoin="round"></line>
+                <line x1="0" y1="102.5" x2="157.5" y2="57.5" id="Line-02" stroke-linecap="round" stroke-linejoin="round"></line>
+                <circle id="Circle-02" fill="#70F1AE" cx="177.5" cy="114.5" r="22.5"></circle>
+                <circle id="Circel-01" fill="#FADA37" cx="29.5" cy="25.5" r="13.5"></circle>
+                <g id="Cuboid" transform="translate(209.000000, 0.000000)" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline id="Path-3" fill="#FADA37" points="62 67 75 55.744186 86 23 75 31.1860465"></polyline>
+                    <polyline id="Path-2" fill="#70F1AE" points="12 7 27.7972973 0 86 23 75.1486486 31"></polyline>
+                    <polygon id="Rectangle" fill="#B6009C" points="11.97635 7 75 31 62 67 0 42"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
