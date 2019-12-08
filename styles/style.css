@@ -153,7 +153,7 @@ header .logo a:hover img{
 }
 
 .we-are__img {
-  width: 100%;
+  display: none;
 }
 
 .smaller {
@@ -232,7 +232,46 @@ header .logo a:hover img{
   margin-top: 19px;
   display: flex;
   flex-wrap: wrap;
-  padding: 0 30px;
+  position: relative;
+}
+
+.technologies img {
+  filter: grayscale(1);
+  border: 2px solid transparent;
+  width: 64px;
+  height: 64px;
+  border-radius: 24px;
+  padding: 10px;
+  transition: all .5s ease;
+}
+.about .technologies img.active {
+  filter: none;
+  border-color: var(--pink)
+}
+
+.about .philosphy .text p:first-child {
+  position: relative;
+}
+
+.technologies .tooltip,
+.about .philosphy .tooltip {
+  display: none;
+  position: absolute;
+  font-size: 0.9em;
+  background-color: var(--toolpit);
+  width: 350px;
+  transition: all .5s ease;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+.about .technologies img.active ~ .tooltip,
+.about .philosphy .dotted.active ~ .tooltip{
+  display: block;
+  z-index: 10;
+}
+
+.about .technologies .tooltip span {
+  font-weight: 700;
 }
 
 .figure-before {
@@ -240,8 +279,8 @@ header .logo a:hover img{
   border: 13px solid transparent;
   border-top: 13px solid var(--toolpit);
   position: absolute;
-  top: -13px;
-  left: 29%;
+  top: -20px;
+  left: 18px;
 }
 
 .about .technologies .technologies-item {
@@ -282,7 +321,7 @@ header .logo a:hover img{
 }
 
 .about .technologies .technologies-item figcaption:before {
-  content: '';
+  /* content: ''; */
   border: 13px solid transparent;
   border-top: 13px solid var(--toolpit);
   position: absolute;
@@ -309,18 +348,24 @@ header .logo a:hover img{
   transition: all .5s ease;
 }
 
-.about .technologies .technologies-item img:hover {
+/* .about .technologies .technologies-item img:hover {
+  filter: none;
+  border-color: var(--pink)
+} */
+
+.about .technologies .technologies-item img.active {
   filter: none;
   border-color: var(--pink)
 }
 
-.about .technologies .technologies-item img:hover + figcaption {
+/* .about .technologies .technologies-item img:hover + figcaption {
   display: block;
   z-index: 10;
-}
+} */
 
-.about .service-img {
-  margin-top: 48px;
+.about .technologies .technologies-item img.active + figcaption {
+  display: block;
+  z-index: 10;
 }
 
 .images .wrapper.centring {
@@ -462,11 +507,7 @@ header .logo a:hover img{
   color: var(--pink);
 }
 
-.job-items .job-item a:hover {
-  text-decoration: underline;
-}
-
-.job-items .job-item a:hover:after {
+.job-items .job-item a:after {
   content: "";
   position: absolute;
   width: 15px;
@@ -475,6 +516,10 @@ header .logo a:hover img{
   background-position: left center;
   background-size: cover;
   right: -20px;
+}
+
+.job-items .job-item a:hover {
+  text-decoration: underline;
 }
 
 footer {
@@ -607,6 +652,23 @@ footer form .item button {
 
 @media screen and (max-width: 886px){
 
+  .we-are__img {
+    display: block;
+    margin-top: 20px;
+  }
+
+  .we-are__img img {
+    width: 100%;
+  }
+
+  .about .technologies {
+    position: relative;
+  }
+  
+  .about .technologies .technologies-item figure {
+    position: static;
+  }
+
 
   .puzzle, .service-img {
     display: block;
@@ -717,8 +779,10 @@ footer form .item button {
     bottom: 5px;
     right: -9px;
   }
+  
 
-  .service-img {
+  .about .service-img {
+    margin-top: 48px;
     animation: serviceImg 2s ease-in infinite;
   }
 
@@ -729,7 +793,28 @@ footer form .item button {
 
 
 @media screen and (max-width: 484px) {
-  header .logo, header {
+  header {
+    margin: 38px 0 42px;
+  }
+
+  header .header {
+    align-items: center;
+  }
+
+  header .logo {
+    margin-bottom: 0;
+  }
+
+  header .languages {
+    margin-left: 103px;
+  }
+
+  .header button {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .header button:last-child {
     margin-bottom: 0;
   }
 
@@ -742,14 +827,27 @@ footer form .item button {
     font-size: 36px;
   }
 
-  .about .technologies {
-    padding: 0;
+  .about .about-item p .dotted .tooltip,
+  .about .technologies .technologies-item figcaption {
+    padding: 24px 36px 24px 21px;
   }
 
   .about .technologies .technologies-item {
     width: 17%;
   }
 
+  footer form .item {
+    width: auto;
+  }
+
+  footer form .item label {
+    top: 20px;
+  }
+
+  footer form .item .input-tooltip,
+  footer form .textarea .input-tooltip {
+    display: none;
+  }
 
 }
 
