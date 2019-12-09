@@ -81,6 +81,7 @@ $(document).ready(() => {
     const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
     const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.parentNode.querySelector('.tooltip');
     const figureBefore = event.currentTarget.querySelector('.figure-before') || event.currentTarget.parentNode.querySelector('.figure-before');
+    const tooltipBorder = event.currentTarget.querySelector('.tooltip-border') || event.currentTarget.parentNode.querySelector('.tooltip-border');
     const text = technologies1.filter(item => item.name === this.getAttribute('data-name'))[0].__html;
     qwe.innerHTML = text;
     const vw = window.innerWidth;
@@ -89,9 +90,11 @@ $(document).ready(() => {
 
     vh = tooltip.scrollHeight + 20;
     const top = vh > 100 && window.innerWidth > 380 ? vh - offsetTop : vh - offsetTop -2;
+    const miunsTop = vh < 90 ? 0 : 8;
+    tooltipBorder.style.cssText = `${vh < 90 ? `top: 17%;` : ''}`;
     console.log(top, vh, vw, offsetTop);
     const right = window.innerWidth < tooltip.getBoundingClientRect().right ? `right: ${0}; left: auto` : 'right: auto';
-    tooltip.style.cssText += `top: -${top}px; ${right}`;
+    tooltip.style.cssText += `top: -${top - miunsTop}px; ${right}`;
     figureBefore.style.cssText = `display: block; position: absolute; left: ${offsetLeft + 20}px; top: ${offsetTop - 21}px`;
   }
 
