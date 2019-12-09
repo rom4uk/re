@@ -193,9 +193,9 @@ header .logo a:hover img{
   text-decoration-style: dotted;
   text-underline-position: under;
   text-decoration-color: var(--pink);
-  position: relative;
 }
-.about .about-item p .dotted .tooltip,
+
+/* .about .about-item p .dotted .tooltip,
 .about .technologies .technologies-item figcaption {
   display: none;
   position: absolute;
@@ -205,23 +205,16 @@ header .logo a:hover img{
   transition: all .5s ease;
   border-radius: 20px;
   padding: 10px 20px;
-}
+} */
 
-
-.about .about-item p .dotted .tooltip {
-  top: -115px;
-  left: -58px;
-  transform: translate(20px, -60px);
-}
-
-.about .about-item p .dotted .tooltip:before {
+/* .about .about-item p .dotted .tooltip:before {
   content: '';
   border: 13px solid transparent;
   border-top: 13px solid var(--toolpit);
   position: absolute;
   bottom: -15%;
   left: 45px;
-}
+} */
 
 .about .about-item p .dotted:hover .tooltip{
   display: block;
@@ -244,7 +237,7 @@ header .logo a:hover img{
   padding: 10px;
   transition: all .5s ease;
 }
-.about .technologies img.active {
+.about .technologies .img-wrapper.active img {
   filter: none;
   border-color: var(--pink)
 }
@@ -257,17 +250,54 @@ header .logo a:hover img{
 .about .philosphy .tooltip {
   display: none;
   position: absolute;
+  width: 350px;
+  /* font-size: 0.9em;
+  background-color: var(--toolpit);
+  transition: all .5s ease;
+  border-radius: 20px;
+  padding: 10px 20px; */
+}
+
+.technologies .tooltip .qwe,
+.about .philosphy .tooltip .qwe {
+  width: 350px;
   font-size: 0.9em;
   background-color: var(--toolpit);
-  width: 350px;
   transition: all .5s ease;
   border-radius: 20px;
   padding: 10px 20px;
+  display: inline-block;
 }
-.about .technologies img.active ~ .tooltip,
-.about .philosphy .dotted.active ~ .tooltip{
+
+.about .technologies .img-wrapper.active .tooltip,
+.about .philosphy .dotted.active .tooltip{
   display: block;
   z-index: 10;
+  border-bottom: 20px solid transparent;
+  background-clip: padding-box;
+}
+
+.about .technologies .img-wrapper.active .tooltip a,
+.about .philosphy .dotted.active .tooltip a {
+  position: relative;
+  color: var(--title);
+}
+
+.about .technologies .img-wrapper.active .tooltip a:hover,
+.about .philosphy .dotted.active .tooltip a:hover {
+  border-bottom: 4px solid black;
+}
+
+.about .technologies .img-wrapper.active .tooltip a:after,
+.about .philosphy .dotted.active .tooltip a:after{
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-image: url('../img/Outbound.svg');
+  background-position: left center;
+  background-size: cover;
+  right: -20px;  
 }
 
 .about .technologies .tooltip span {
@@ -507,7 +537,7 @@ header .logo a:hover img{
   color: var(--pink);
 }
 
-.job-items .job-item a:after {
+/* .job-items .job-item a:after {
   content: "";
   position: absolute;
   width: 15px;
@@ -516,10 +546,21 @@ header .logo a:hover img{
   background-position: left center;
   background-size: cover;
   right: -20px;
-}
+} */
 
 .job-items .job-item a:hover {
   text-decoration: underline;
+}
+
+.job-items .job-item a:hover:after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-image: url('../img/Outbound.svg');
+  background-position: left center;
+  background-size: cover;
+  right: -20px;
 }
 
 footer {
@@ -825,11 +866,6 @@ footer form .item button {
   .we-are h2.smaller {
     display: block;
     font-size: 36px;
-  }
-
-  .about .about-item p .dotted .tooltip,
-  .about .technologies .technologies-item figcaption {
-    padding: 24px 36px 24px 21px;
   }
 
   .about .technologies .technologies-item {

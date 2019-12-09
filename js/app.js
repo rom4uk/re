@@ -56,11 +56,11 @@ let vh;
 
 $(document).ready(() => {
 
-  const techItems = document.querySelectorAll('.technologies img');
+  const techItems = document.querySelectorAll('.technologies .img-wrapper');
   const dotted = document.querySelectorAll('.about .philosphy .dotted');
 
   techItems.forEach(item => {
-    item.addEventListener('mouseover', techItemEnter);
+    item.addEventListener('mouseenter', techItemEnter);
     item.addEventListener('mouseleave', techItemLeave);
   });
   dotted.forEach(item => {
@@ -72,31 +72,42 @@ $(document).ready(() => {
     this.classList.add('active');
     const offsetTop = this.offsetTop;
     const offsetLeft = this.offsetLeft;
-    const tooltip = document.createElement('span');
-    const before = document.createElement('span');
-    tooltip.classList.add('tooltip');
-    before.classList.add('figure-before');
-    this.parentNode.appendChild(tooltip);
-    this.parentNode.appendChild(before);
+    // const tooltip = document.createElement('span');
+    // const before = document.createElement('span');
+    // tooltip.classList.add('tooltip');
+    // before.classList.add('figure-before');
+    // this.parentNode.appendChild(tooltip);
+    // this.parentNode.appendChild(before);
+    const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
+    const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.parentNode.querySelector('.tooltip');
+    const figureBefore = event.currentTarget.querySelector('.figure-before') || event.currentTarget.parentNode.querySelector('.figure-before');
     const text = technologies1.filter(item => item.name === this.getAttribute('data-name'))[0].__html;
-    tooltip.innerHTML = text;
+    console.log(qwe);
+    qwe.innerHTML = text;
     const vw = window.innerWidth - 30;
-    tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: auto`;
+    tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: 20px`;
 
     vh = tooltip.scrollHeight + 20;
     const top = vh > 100 && window.innerWidth > 380 ? vh - offsetTop : vh - offsetTop -2;
     console.log(top, vh, offsetTop);
     const right = window.innerWidth < tooltip.getBoundingClientRect().right ? `right: ${0}; left: auto` : 'right: auto';
     tooltip.style.cssText += `top: -${top}px; ${right}`;
-    before.style.cssText = `display: block; position: absolute; left: ${offsetLeft + 20}px; top: ${offsetTop - 21}px`;
+    figureBefore.style.cssText = `display: block; position: absolute; left: ${offsetLeft + 20}px; top: ${offsetTop - 21}px`;
   }
 
   function techItemLeave(event) {
-    const tooltip = event.currentTarget.parentElement.querySelector('.tooltip');
-    const figureBefore = event.currentTarget.parentElement.querySelector('.figure-before');
+    console.log(event.relatedTarget);
+    const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
+    const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.parentNode.querySelector('.tooltip');
+    const figureBefore = event.currentTarget.querySelector('.figure-before') || event.currentTarget.parentNode.querySelector('.figure-before');
+    tooltip.removeAttribute('style');
+    figureBefore.removeAttribute('style');
+    qwe.innerHTML = '';
+    // const tooltip = event.currentTarget.parentElement.querySelector('.tooltip');
+    // const figureBefore = event.currentTarget.parentElement.querySelector('.figure-before');
     this.classList.remove('active');
-    figureBefore.remove();
-    tooltip.remove();
+    // figureBefore.remove();
+    // tooltip.remove();
   }
 
 
