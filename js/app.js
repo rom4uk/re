@@ -82,21 +82,19 @@ $(document).ready(() => {
     const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.parentNode.querySelector('.tooltip');
     const figureBefore = event.currentTarget.querySelector('.figure-before') || event.currentTarget.parentNode.querySelector('.figure-before');
     const text = technologies1.filter(item => item.name === this.getAttribute('data-name'))[0].__html;
-    console.log(qwe);
     qwe.innerHTML = text;
-    const vw = window.innerWidth - 30;
-    tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: 20px`;
+    const vw = window.innerWidth;
+    tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: auto`;
 
     vh = tooltip.scrollHeight + 20;
     const top = vh > 100 && window.innerWidth > 380 ? vh - offsetTop : vh - offsetTop -2;
-    console.log(top, vh, offsetTop);
+    console.log(top, vh, vw, offsetTop);
     const right = window.innerWidth < tooltip.getBoundingClientRect().right ? `right: ${0}; left: auto` : 'right: auto';
     tooltip.style.cssText += `top: -${top}px; ${right}`;
     figureBefore.style.cssText = `display: block; position: absolute; left: ${offsetLeft + 20}px; top: ${offsetTop - 21}px`;
   }
 
   function techItemLeave(event) {
-    console.log(event.relatedTarget);
     const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
     const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.parentNode.querySelector('.tooltip');
     const figureBefore = event.currentTarget.querySelector('.figure-before') || event.currentTarget.parentNode.querySelector('.figure-before');

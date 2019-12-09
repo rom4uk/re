@@ -286,6 +286,7 @@ header .logo a:hover img{
 .about .technologies .img-wrapper.active .tooltip a:hover,
 .about .philosphy .dotted.active .tooltip a:hover {
   border-bottom: 4px solid black;
+  font-weight: 700;
 }
 
 .about .technologies .img-wrapper.active .tooltip a:after,
