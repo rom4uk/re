@@ -84,7 +84,8 @@ $(document).ready(() => {
     const text = technologies1.filter(item => item.name === this.getAttribute('data-name'))[0].__html;
     qwe.innerHTML = text;
     const vw = window.innerWidth;
-    tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: auto`;
+    // tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: auto`;
+    tooltip.style.cssText = `left: ${offsetLeft}px`;
 
     vh = tooltip.scrollHeight + 20;
     const top = vh > 100 && window.innerWidth > 380 ? vh - offsetTop : vh - offsetTop -2;

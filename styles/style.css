@@ -271,10 +271,23 @@ header .logo a:hover img{
 
 .about .technologies .img-wrapper.active .tooltip,
 .about .philosphy .dotted.active .tooltip{
+  width: fit-content;
   display: block;
   z-index: 10;
   border-bottom: 20px solid transparent;
   background-clip: padding-box;
+}
+
+
+.tooltip-border {
+  background-image: url('../img/fake.png');
+  background-repeat: repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  top: 4%;
+  left: 2%;
 }
 
 .about .technologies .img-wrapper.active .tooltip a,
@@ -312,6 +325,7 @@ header .logo a:hover img{
   position: absolute;
   top: -20px;
   left: 18px;
+  z-index: 10;
 }
 
 .about .technologies .technologies-item {
@@ -825,7 +839,13 @@ footer form .item button {
 
   .about .service-img {
     margin-top: 48px;
-    animation: serviceImg 2s ease-in infinite;
+    position: relative;
+    /* animation: serviceImg 2s ease-in infinite; */
+  }
+
+  .about .service-img img {
+    position: relative;
+    left: -100%;
   }
 
   .slick-next {
@@ -909,11 +929,11 @@ footer form .item button {
 }
 
 
-@keyframes serviceImg {
+/* @keyframes serviceImg {
   0% {
     transform: translateX(-100%);
   }
   100% {
     transform: translateX(100%);
   }
-}
+} */
