@@ -61,9 +61,7 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  padding: 20px 0 0 0;
+body {  
   color: #444444;
   font-size: 18px;
   font-family: 'Avenir Next', monospace;
@@ -86,6 +84,14 @@ button {
 
 a {
   text-decoration: none;
+}
+
+p {
+  color: var(--title);
+  font-family: 'AvenirNext';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
 }
 
 .blured {
@@ -167,6 +173,7 @@ header .logo a:hover img{
 
 .about .about-items {
   color: var(--title);
+  width: calc(100% / 12 * 6);
 }
 
 .puzzle, .service-img {
@@ -178,47 +185,19 @@ header .logo a:hover img{
 }
 
 .about .about-item h3 {
-  font-size: 1.4em;
-  font-weight: bold;
-}
-
-.about .about-item p {
-  margin-top: 16px;
-  font-weight: 400;
-  font-size: 1em;
+  font-family: 'AvenirNext';
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 49px;
 }
 
 .about .about-item p .dotted {
+  font-weight: 600;
   text-decoration: underline;
   text-decoration-style: dotted;
   text-underline-position: under;
   text-decoration-color: var(--pink);
-}
-
-/* .about .about-item p .dotted .tooltip,
-.about .technologies .technologies-item figcaption {
-  display: none;
-  position: absolute;
-  font-size: 0.9em;
-  background-color: var(--toolpit);
-  width: 350px;
-  transition: all .5s ease;
-  border-radius: 20px;
-  padding: 10px 20px;
-} */
-
-/* .about .about-item p .dotted .tooltip:before {
-  content: '';
-  border: 13px solid transparent;
-  border-top: 13px solid var(--toolpit);
-  position: absolute;
-  bottom: -15%;
-  left: 45px;
-} */
-
-.about .about-item p .dotted:hover .tooltip{
-  display: block;
-  z-index: 10;
 }
 
 .about .technologies {
@@ -251,11 +230,6 @@ header .logo a:hover img{
   display: none;
   position: absolute;
   width: 350px;
-  /* font-size: 0.9em;
-  background-color: var(--toolpit);
-  transition: all .5s ease;
-  border-radius: 20px;
-  padding: 10px 20px; */
 }
 
 .technologies .tooltip .qwe,
@@ -271,11 +245,11 @@ header .logo a:hover img{
 
 .about .technologies .img-wrapper.active .tooltip,
 .about .philosphy .dotted.active .tooltip{
-  width: fit-content;
   display: block;
   z-index: 10;
   border-bottom: 20px solid transparent;
   background-clip: padding-box;
+  font-weight: normal;
 }
 
 
@@ -288,12 +262,14 @@ header .logo a:hover img{
   z-index: -1;
   top: 4%;
   left: 2%;
+  border-radius: 13px;
 }
 
 .about .technologies .img-wrapper.active .tooltip a,
 .about .philosphy .dotted.active .tooltip a {
   position: relative;
   color: var(--title);
+  font-weight: 600;
 }
 
 .about .technologies .img-wrapper.active .tooltip a:hover,
@@ -488,7 +464,7 @@ header .logo a:hover img{
   display: none !important;
 }
 
-.slick-next {
+[dir='rtl'] .slick-next {
   background-color: #70F1AE;
   border: 4px solid #B6009C;
   border-radius: 100%;
@@ -498,6 +474,7 @@ header .logo a:hover img{
   display: flex;
   align-items: center;
   justify-content: center;
+  left: auto;
 }
 
 .slick-next:after {
@@ -509,12 +486,17 @@ header .logo a:hover img{
   position: absolute;
 }
 
-.slick-prev:before, .slick-next:before {
+[dir='rtl'] .slick-prev:before, [dir='rtl'] .slick-next:before {
   opacity: 1;
   color: #B6009C;
   position: absolute;
   font-family: inherit;
-  font-size: 40px;
+  font-size: 35px;
+  width: 20px;
+}
+
+[dir='rtl'] .slick-next:before {
+  content: url(../img/arrow-right-solid.svg);
 }
 
 .slick-prev:hover,
@@ -542,11 +524,29 @@ header .logo a:hover img{
   padding-top: 80px;
 }
 
+.jobs .job {
+  width: calc(100% / 12 * 6);
+}
+
+/* .jobs .job p {
+  font-family: 'AvenirNext';
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+} */
+
+.job-items {
+  display: flex;
+  flex-direction: column;
+}
+
 .job-items .job-item {
-  position: relative;
+  margin-bottom: 16px;
+  width: fit-content;
 }
 
 .job-items .job-item a {
+  position: relative;
   font-size: 1em;
   font-weight: 600;
   color: var(--pink);
@@ -593,14 +593,12 @@ footer form .item {
   width: calc(100% / 12 * 6);
   margin-bottom: 59px;
   position: relative;
-  /* height: 80px; */
   display: flex;
   align-items: flex-end;
 }
 
 footer form .item input,
 footer form .item textarea {
-  border: none;
   outline: none;
   border: 1px solid var(--inputBorder);
   border-radius: 24px;
@@ -676,6 +674,12 @@ footer form .item textarea.invalid ~ label {
   font-size: 0.8em;
 }
 
+
+footer form .item button img {
+  margin-right: 10px;
+}
+
+
 footer .after-subm {
   display: none;
 }
@@ -695,15 +699,19 @@ footer .after-subm .another {
 }
 
 footer form .item button {
-  padding: 13px 91px;
+  padding: 13px 0;
   border: none;
   outline: none;
   border-radius: 32px;
   background-color: var(--pink);
-  font-size: 1.6em;
-  font-weight: bold;
-  letter-spacing: 2.33px;
   color: var(--white);
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 1.83px;
 }
 
 @media screen and (max-width: 886px){
@@ -714,6 +722,15 @@ footer form .item button {
   }
 
   .we-are__img img {
+    width: 100%;
+  }
+
+  p {
+    font-size: 20px;
+  }
+  
+  .about .about-items,
+  .jobs .job {
     width: 100%;
   }
 
@@ -840,23 +857,46 @@ footer form .item button {
   .about .service-img {
     margin-top: 48px;
     position: relative;
-    /* animation: serviceImg 2s ease-in infinite; */
+    animation: serviceImg 2s ease-in infinite;
   }
 
   .about .service-img img {
     position: relative;
-    left: -100%;
   }
 
   .slick-next {
     right: 0;
   }
+
+  .job-items .job-item a:after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-image: url('../img/Outbound.svg');
+    background-position: left center;
+    background-size: cover;
+    right: -20px;
+  }
+
 }
 
 
 @media screen and (max-width: 484px) {
+
+  .title, .text, .job {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0 32px 0 17px;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
   header {
-    margin: 38px 0 42px;
+    margin: 24px 9px 42px;
   }
 
   header .header {
@@ -869,6 +909,7 @@ footer form .item button {
 
   header .languages {
     margin-left: 103px;
+    text-align: right;
   }
 
   .header button {
@@ -887,6 +928,10 @@ footer form .item button {
   .we-are h2.smaller {
     display: block;
     font-size: 36px;
+  }
+
+  footer form .item {
+    width: 100%;
   }
 
   .about .technologies .technologies-item {
@@ -929,11 +974,11 @@ footer form .item button {
 }
 
 
-/* @keyframes serviceImg {
+@keyframes serviceImg {
   0% {
     transform: translateX(-100%);
   }
   100% {
     transform: translateX(100%);
   }
-} */
+}

@@ -69,31 +69,31 @@ $(document).ready(() => {
   });
 
   function techItemEnter(event) {
+    console.log(event.srcElement.localName)
     this.classList.add('active');
     const offsetTop = this.offsetTop;
     const offsetLeft = this.offsetLeft;
-    // const tooltip = document.createElement('span');
-    // const before = document.createElement('span');
-    // tooltip.classList.add('tooltip');
-    // before.classList.add('figure-before');
-    // this.parentNode.appendChild(tooltip);
-    // this.parentNode.appendChild(before);
     const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
     const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.parentNode.querySelector('.tooltip');
     const figureBefore = event.currentTarget.querySelector('.figure-before') || event.currentTarget.parentNode.querySelector('.figure-before');
     const tooltipBorder = event.currentTarget.querySelector('.tooltip-border') || event.currentTarget.parentNode.querySelector('.tooltip-border');
     const text = technologies1.filter(item => item.name === this.getAttribute('data-name'))[0].__html;
+    const parentWrapper = event.currentTarget.parentNode;
+    console.log(parentWrapper);
+
     qwe.innerHTML = text;
     const vw = window.innerWidth;
+    console.log(tooltip.parentElement);
     // tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: auto`;
     tooltip.style.cssText = `left: ${offsetLeft}px`;
 
     vh = tooltip.scrollHeight + 20;
-    const top = vh > 100 && window.innerWidth > 380 ? vh - offsetTop : vh - offsetTop -2;
+    const top = vh > 100 && vw > 380 ? vh - offsetTop : vh - offsetTop - 2;
     const miunsTop = vh < 90 ? 0 : 8;
     tooltipBorder.style.cssText = `${vh < 90 ? `top: 17%;` : ''}`;
-    console.log(top, vh, vw, offsetTop);
-    const right = window.innerWidth < tooltip.getBoundingClientRect().right ? `right: ${0}; left: auto` : 'right: auto';
+    console.log(top, vh, vw, offsetTop, tooltip.getBoundingClientRect().right, parentWrapper.getBoundingClientRect().right);
+    const textRight = event.srcElement.localName === 'span' ? '-32px' : '7px';
+    const right = vw < tooltip.getBoundingClientRect().right ? `right: ${textRight}; left: auto` : 'right: auto';
     tooltip.style.cssText += `top: -${top - miunsTop}px; ${right}`;
     figureBefore.style.cssText = `display: block; position: absolute; left: ${offsetLeft + 20}px; top: ${offsetTop - 21}px`;
   }
@@ -118,7 +118,8 @@ $(document).ready(() => {
   images.slick({
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    rtl: true,
+    slidesToShow: 4.5,
     slidesToScroll: 1,
     arrows: true,
     focusOnSelect: true,
@@ -159,9 +160,9 @@ $(document).ready(() => {
   images.on('click', '.slick-slide .in-slider', twoSlides);
 
   function hideOnScroll(overlay) {
-    if(clicked) {
+    if (clicked) {
       images.slick('slickSetOption', {
-        slidesToShow: 4
+        slidesToShow: 4.5
       }, true);
       document.body.classList.remove('slide');
       overlay.style.height = '0px';
@@ -218,11 +219,13 @@ $(document).ready(() => {
     })
 
     document.addEventListener('scroll', () => {
-      if(sliding) {
-        let top = document.querySelector('.images .image-items').getBoundingClientRect().top;
+      if (sliding) {
+        let itemTop = document.querySelector('.images .image-items').getBoundingClientRect().top;
         let innerHeight = window.innerHeight;
-        const num = innerHeight / 15;
-        if(top < num ||  top > innerHeight) {
+        let top = innerHeight / 1.3;
+        const num = innerHeight / 80;
+        if (itemTop < num || itemTop > top) {
+          console.log(top, itemTop, innerHeight, num);
           hideOnScroll(overlay);
         }
       }
@@ -230,7 +233,7 @@ $(document).ready(() => {
   }
 
   function bluring(arr, add = true) {
-    if(add) {
+    if (add) {
       arr.forEach(item => {
         item.classList.add('blured');
       })
@@ -253,13 +256,13 @@ $(document).ready(() => {
     })
   }
 
-  $(window).scroll(function(){
+  $(window).scroll(function () {
     scrollFunction();
   });
 
-  $('#scrollTopBtn').click(function() {
+  $('#scrollTopBtn').click(function () {
     $('html, body').animate(
-      {scrollTop: 0},
+      { scrollTop: 0 },
       'slow'
     );
   });
@@ -276,17 +279,17 @@ function scrollFunction() {
 const textarea = document.querySelector('textarea');
 textarea.addEventListener('keydown', autosize);
 
-function autosize(){
+function autosize() {
   const el = this;
-    setTimeout(function(){
-      el.style.cssText = 'height: auto';
-      if(el.getBoundingClientRect().height < el.scrollHeight) {
-        el.style.cssText = 'height:' + el.scrollHeight + 'px';
-       }
-       if(el.value == '') {
-        el.removeAttribute('style');
-       }
-    },0);
+  setTimeout(function () {
+    el.style.cssText = 'height: auto';
+    if (el.getBoundingClientRect().height < el.scrollHeight) {
+      el.style.cssText = 'height:' + el.scrollHeight + 'px';
+    }
+    if (el.value == '') {
+      el.removeAttribute('style');
+    }
+  }, 0);
 }
 
 
@@ -297,7 +300,7 @@ formInputs.forEach((item, index) => {
 
   item.addEventListener('blur', checkInput);
 
-  item.addEventListener('input', function() {
+  item.addEventListener('input', function () {
     typingInput(this);
   });
 })
@@ -307,7 +310,7 @@ function addTyped() {
 }
 
 function checkInput() {
-  if(this.value !== '') {
+  if (this.value !== '') {
     this.classList.add('typed');
   } else {
     this.classList.remove('typed');
@@ -315,19 +318,19 @@ function checkInput() {
 }
 
 function typingInput(elem) {
-  try{
-    if(elem.parentElement.querySelector('.input-tooltip')) {
+  try {
+    if (elem.parentElement.querySelector('.input-tooltip')) {
       elem.parentElement.querySelector('.input-tooltip').remove();
       elem.classList.remove('invalid');
     }
   }
-  catch(err) {
+  catch (err) {
     console.log(err);
   }
 }
 
 function removeInvalidTooltip(event) {
-  if(event.target !== document.querySelector('footer form .phone input') && event.target !== document.querySelector('footer form .message input')) {
+  if (event.target !== document.querySelector('footer form .phone input') && event.target !== document.querySelector('footer form .message input')) {
     const tooltips = document.querySelectorAll('.input-tooltip');
     tooltips.forEach(item => {
       item.parentElement.querySelector('.inputed').classList.remove('invalid');
@@ -346,11 +349,11 @@ const message = document.querySelector('footer form #message');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   let isValid = checkInpits(formInputs);
-  if(isValid) {
+  if (isValid) {
     /* send the message than hide the form */
     $(e.currentTarget).fadeOut(500, () => {
       $('.after-subm').fadeIn(500, () => {
-        timerId = setTimeout(()=> fadeInForm(phone, message), 3000);
+        timerId = setTimeout(() => fadeInForm(phone, message), 3000);
       });
     });
     /*  */
@@ -363,14 +366,14 @@ function fadeInForm(phone, message) {
   message.value = '';
   phone.classList.remove('typed');
   message.classList.remove('typed');
-  $('.after-subm').fadeOut(500, ()=> $(document.forms[0]).fadeIn(500));
+  $('.after-subm').fadeOut(500, () => $(document.forms[0]).fadeIn(500));
 }
 
 function checkInpits(arr) {
   removeTooltip();
   let errors = [];
   arr.forEach(item => {
-    if(item.value === '') {
+    if (item.value === '') {
       const div = document.createElement('div');
       div.classList.add('input-tooltip');
       div.innerText = `Did you forget?`;
@@ -388,31 +391,31 @@ function checkInpits(arr) {
 
 function removeTooltip() {
   const tooltips = document.querySelectorAll('footer .input-tooltip')
-  if(tooltips) {
-    tooltips.forEach(item=>item.remove());
+  if (tooltips) {
+    tooltips.forEach(item => item.remove());
   }
 }
 
-document.querySelector('.another').addEventListener('click', ()=>fadeInForm(phone, message));
+document.querySelector('.another').addEventListener('click', () => fadeInForm(phone, message));
 
 /* puzzle */
 function isPartiallyVisible(el) {
-    var elementBoundary = el.getBoundingClientRect();
- 
-    var top = elementBoundary.top;
-    var bottom = elementBoundary.bottom;
-    var height = elementBoundary.height;
- 
-    return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+  var elementBoundary = el.getBoundingClientRect();
+
+  var top = elementBoundary.top;
+  var bottom = elementBoundary.bottom;
+  var height = elementBoundary.height;
+
+  return ((top + height >= 0) && (height + window.innerHeight >= bottom));
 }
 
 
 function isFullyVisible(el) {
   var elementBoundary = el.getBoundingClientRect();
- 
+
   var top = elementBoundary.top;
   var bottom = elementBoundary.bottom;
- 
+
   return ((top >= 0) && (bottom <= window.innerHeight));
 }
 
@@ -441,11 +444,11 @@ function scrollFinished() {
 } */
 
 
-$(window).scroll(function() {
-  if(isFullyVisible(puzzle)) {
+$(window).scroll(function () {
+  if (isFullyVisible(puzzle)) {
     puzzles.forEach(item => item.classList.remove('moved'));
-  } 
-  if(!isPartiallyVisible(puzzle)) {
+  }
+  if (!isPartiallyVisible(puzzle)) {
     puzzles.forEach(item => item.classList.add('moved'))
   }
 });
@@ -472,21 +475,21 @@ $(window).scroll(function() {
 
 function EmailParser(email) {
   this.email = email;
-  
+
   Object.defineProperty(this, 'name', {
-    get: function() {
+    get: function () {
       return this.isCorrect ? this.email.split('@')[0] : null;
     }
   });
 
   Object.defineProperty(this, 'domain', {
-    get: function() {
+    get: function () {
       return this.isCorrect ? this.email.split('@')[1] : null;
     }
   });
 
   Object.defineProperty(this, 'isCorrect', {
-    get: function() {
+    get: function () {
       return /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+[^<>()\.,;:\s@\"]{2,})$/.test(this.email);
     }
   });
@@ -508,13 +511,13 @@ console.log(obj.isCorrect);
 const div = document.createElement('div');
 //document.body.appendChild(div);
 
-const watchObj = function(elem, func) {
+const watchObj = function (elem, func) {
   return new Proxy(elem, {
     get(target, name) {
       switch (typeof target[name]) {
-        case('object'):
+        case ('object'):
           return watchObj(target[name], func);
-        case('function'):
+        case ('function'):
           return target[name].bind(target);
         default:
           return target[name];
@@ -528,7 +531,7 @@ const watchObj = function(elem, func) {
   })
 }
 
-let cleverDiv = watchObj(div, function(prop, value) {
+let cleverDiv = watchObj(div, function (prop, value) {
   console.log(prop, value);
 })
 
