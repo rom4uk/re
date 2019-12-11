@@ -117,7 +117,7 @@ $(document).ready(() => {
   let images = $('.images .image-items');
   images.slick({
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 4.5,
     slidesToScroll: 1,
     arrows: true,
