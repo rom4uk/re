@@ -765,7 +765,7 @@ footer form .item button {
   .puzzle .puzzle-face {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 5px;
   }
   
   .puzzle .puzzle-item__1 {
