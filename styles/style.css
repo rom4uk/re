@@ -448,6 +448,15 @@ header .logo a:hover img{
   right: -20px;  
 }
 
+.image-items .image-item:not(.slick-current) a:hover {
+  cursor: default;
+  pointer-events: none;
+}
+
+.image-items .image-item:not(.slick-current) a:hover:after {
+  display: none;
+}
+
 .image-items .image-item .in-slider img:hover {
   filter: none;
 }
