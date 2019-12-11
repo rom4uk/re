@@ -434,6 +434,18 @@ header .logo a:hover img{
 .image-items .image-item a {
   color: var(--pink);
   font-weight: 700;
+  position: relative;
+}
+
+.image-items .image-item a:hover:after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-image: url('../img/Outbound.svg');
+  background-position: left center;
+  background-size: cover;
+  right: -20px;  
 }
 
 .image-items .image-item .in-slider img:hover {
@@ -464,7 +476,7 @@ header .logo a:hover img{
   display: none !important;
 }
 
-[dir='rtl'] .slick-next {
+.slick-next {
   background-color: #70F1AE;
   border: 4px solid #B6009C;
   border-radius: 100%;
@@ -486,7 +498,7 @@ header .logo a:hover img{
   position: absolute;
 }
 
-[dir='rtl'] .slick-prev:before, [dir='rtl'] .slick-next:before {
+.slick-prev:before, .slick-next:before {
   opacity: 1;
   color: #B6009C;
   position: absolute;
@@ -495,7 +507,7 @@ header .logo a:hover img{
   width: 20px;
 }
 
-[dir='rtl'] .slick-next:before {
+.slick-next:before {
   content: url(../img/arrow-right-solid.svg);
 }
 
@@ -869,6 +881,17 @@ footer form .item button {
     right: 0;
   }
 
+  .image-items .image-item a:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-image: url('../img/Outbound.svg');
+    background-position: left center;
+    background-size: cover;
+    right: -20px;  
+  }
+
   .job-items .job-item a:after {
     content: "";
     position: absolute;
@@ -950,6 +973,13 @@ footer form .item button {
   footer form .item .input-tooltip,
   footer form .textarea .input-tooltip {
     display: none;
+  }
+
+}
+
+@media screen and (max-width: 375px) {
+  .puzzle {
+    left: -10px;
   }
 
 }

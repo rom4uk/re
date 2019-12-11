@@ -92,8 +92,8 @@ $(document).ready(() => {
     const miunsTop = vh < 90 ? 0 : 8;
     tooltipBorder.style.cssText = `${vh < 90 ? `top: 17%;` : ''}`;
     console.log(top, vh, vw, offsetTop, tooltip.getBoundingClientRect().right, parentWrapper.getBoundingClientRect().right);
-    const textRight = event.srcElement.localName === 'span' ? '-32px' : '7px';
-    const right = vw < tooltip.getBoundingClientRect().right ? `right: ${textRight}; left: auto` : 'right: auto';
+    const textRight = event.srcElement.localName === 'span' && vw < tooltip.getBoundingClientRect().right ? -32 : 0;
+    const right = vw < tooltip.getBoundingClientRect().right ? `right: ${textRight + 7}px; left: auto` : 'right: auto';
     tooltip.style.cssText += `top: -${top - miunsTop}px; ${right}`;
     figureBefore.style.cssText = `display: block; position: absolute; left: ${offsetLeft + 20}px; top: ${offsetTop - 21}px`;
   }
@@ -118,7 +118,6 @@ $(document).ready(() => {
   images.slick({
     infinite: true,
     speed: 500,
-    rtl: true,
     slidesToShow: 4.5,
     slidesToScroll: 1,
     arrows: true,
