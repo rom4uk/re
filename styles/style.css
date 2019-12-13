@@ -88,7 +88,7 @@ a {
 
 p {
   color: var(--title);
-  font-family: 'AvenirNext';
+  font-family: 'Avenir Next';
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
@@ -185,7 +185,7 @@ header .logo a:hover img{
 }
 
 .about .about-item h3 {
-  font-family: 'AvenirNext';
+  font-family: 'Avenir Next';
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 16px;
@@ -198,6 +198,10 @@ header .logo a:hover img{
   text-decoration-style: dotted;
   text-underline-position: under;
   text-decoration-color: var(--pink);
+}
+
+.about .about-item p .dotted.active {
+  cursor: pointer;
 }
 
 .about .technologies {
@@ -550,7 +554,7 @@ header .logo a:hover img{
 }
 
 /* .jobs .job p {
-  font-family: 'AvenirNext';
+  font-family: 'Avenir Next';
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;

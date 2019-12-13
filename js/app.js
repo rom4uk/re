@@ -69,7 +69,8 @@ $(document).ready(() => {
   });
 
   function techItemEnter(event) {
-    console.log(event.srcElement.localName)
+    event.preventDefault();
+    console.log('currentTarget', event.currentTarget);
     this.classList.add('active');
     const offsetTop = this.offsetTop;
     const offsetLeft = this.offsetLeft;
@@ -79,7 +80,8 @@ $(document).ready(() => {
     const tooltipBorder = event.currentTarget.querySelector('.tooltip-border') || event.currentTarget.parentNode.querySelector('.tooltip-border');
     const text = technologies1.filter(item => item.name === this.getAttribute('data-name'))[0].__html;
     const parentWrapper = event.currentTarget.parentNode;
-    console.log(parentWrapper);
+    // parentWrapper.style.cssText = `border: 1px solid red;`;
+    console.log(parentWrapper, tooltip, (tooltip.getBoundingClientRect().right - parentWrapper.getBoundingClientRect().right), tooltip.getBoundingClientRect().right, parentWrapper.getBoundingClientRect().right);
 
     qwe.innerHTML = text;
     const vw = window.innerWidth;
@@ -91,14 +93,15 @@ $(document).ready(() => {
     const top = vh > 100 && vw > 380 ? vh - offsetTop : vh - offsetTop - 2;
     const miunsTop = vh < 90 ? 0 : 8;
     tooltipBorder.style.cssText = `${vh < 90 ? `top: 17%;` : ''}`;
-    console.log(top, vh, vw, offsetTop, tooltip.getBoundingClientRect().right, parentWrapper.getBoundingClientRect().right);
-    const textRight = event.srcElement.localName === 'span' && vw < tooltip.getBoundingClientRect().right ? -32 : 0;
-    const right = vw < tooltip.getBoundingClientRect().right ? `right: ${textRight + 7}px; left: auto` : 'right: auto';
+    console.log(top, vh, vw, offsetTop, tooltip.getBoundingClientRect().right, parentWrapper.getBoundingClientRect().right, offsetLeft);
+    const textRight = event.srcElement.localName === 'span' ? -32 : 0;
+    const right = vw < tooltip.getBoundingClientRect().right ? `right: ${textRight + 5}px; left: auto` : 'right: auto';
     tooltip.style.cssText += `top: -${top - miunsTop}px; ${right}`;
     figureBefore.style.cssText = `display: block; position: absolute; left: ${offsetLeft + 20}px; top: ${offsetTop - 21}px`;
   }
 
   function techItemLeave(event) {
+    console.log('leave');
     const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
     const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.parentNode.querySelector('.tooltip');
     const figureBefore = event.currentTarget.querySelector('.figure-before') || event.currentTarget.parentNode.querySelector('.figure-before');
@@ -118,7 +121,7 @@ $(document).ready(() => {
   images.slick({
     infinite: true,
     speed: 600,
-    slidesToShow: 4.5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     arrows: true,
     focusOnSelect: true,
@@ -161,7 +164,7 @@ $(document).ready(() => {
   function hideOnScroll(overlay) {
     if (clicked) {
       images.slick('slickSetOption', {
-        slidesToShow: 4.5
+        slidesToShow: 4
       }, true);
       document.body.classList.remove('slide');
       overlay.style.height = '0px';
