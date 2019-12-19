@@ -485,6 +485,10 @@ header .logo a:hover img{
   margin: 0 5px;
 }
 
+.slick-list {
+  padding-left: 0px!important;
+}
+
 .slick-prev {
   display: none !important;
 }
@@ -814,8 +818,8 @@ footer form .item button {
   }
   
   .puzzle .puzzle-item__3 {
-    left: 155px;
-    top: -14px;
+    left: 146px;
+    top: -9px;
   }
   .puzzle .puzzle-item__3.moved {
     left: 227px;

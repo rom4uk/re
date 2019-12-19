@@ -74,7 +74,7 @@ $(document).ready(() => {
     this.classList.add('active');
     const offsetTop = this.offsetTop;
     const offsetLeft = this.offsetLeft;
-    const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
+    // const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
     const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.parentNode.querySelector('.tooltip');
     const figureBefore = event.currentTarget.querySelector('.figure-before') || event.currentTarget.parentNode.querySelector('.figure-before');
     const tooltipBorder = event.currentTarget.querySelector('.tooltip-border') || event.currentTarget.parentNode.querySelector('.tooltip-border');
@@ -83,11 +83,12 @@ $(document).ready(() => {
     // parentWrapper.style.cssText = `border: 1px solid red;`;
     console.log(parentWrapper, tooltip, (tooltip.getBoundingClientRect().right - parentWrapper.getBoundingClientRect().right), tooltip.getBoundingClientRect().right, parentWrapper.getBoundingClientRect().right);
 
-    qwe.innerHTML = text;
+    // qwe.innerHTML = text;
+    const floatingRight = tooltip.getBoundingClientRect().right > parentWrapper.getBoundingClientRect().right ? tooltip.getBoundingClientRect().right - parentWrapper.getBoundingClientRect().right : 0;
     const vw = window.innerWidth;
-    console.log(tooltip.parentElement);
+    console.log('floatingRight', floatingRight, offsetLeft - floatingRight);
     // tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: auto`;
-    tooltip.style.cssText = `left: ${offsetLeft}px`;
+    tooltip.style.cssText = vw < 380 ? `left: ${offsetLeft - floatingRight + 30}px` : `left: ${offsetLeft}px`;
 
     vh = tooltip.scrollHeight + 20;
     const top = vh > 100 && vw > 380 ? vh - offsetTop : vh - offsetTop - 2;
@@ -102,12 +103,12 @@ $(document).ready(() => {
 
   function techItemLeave(event) {
     console.log('leave');
-    const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
+    // const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
     const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.parentNode.querySelector('.tooltip');
     const figureBefore = event.currentTarget.querySelector('.figure-before') || event.currentTarget.parentNode.querySelector('.figure-before');
     tooltip.removeAttribute('style');
     figureBefore.removeAttribute('style');
-    qwe.innerHTML = '';
+    // qwe.innerHTML = '';
     // const tooltip = event.currentTarget.parentElement.querySelector('.tooltip');
     // const figureBefore = event.currentTarget.parentElement.querySelector('.figure-before');
     this.classList.remove('active');
@@ -121,11 +122,13 @@ $(document).ready(() => {
   images.slick({
     infinite: true,
     speed: 600,
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
     arrows: true,
     focusOnSelect: true,
     pauseOnFocus: false,
+    centerMode: true,
+    centerPadding: '150px',
     responsive: [
       {
         breakpoint: 886,
