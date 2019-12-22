@@ -81,20 +81,17 @@ $(document).ready(() => {
     const text = technologies1.filter(item => item.name === this.getAttribute('data-name'))[0].__html;
     const parentWrapper = event.currentTarget.parentNode;
     // parentWrapper.style.cssText = `border: 1px solid red;`;
-    console.log(parentWrapper, tooltip, (tooltip.getBoundingClientRect().right - parentWrapper.getBoundingClientRect().right), tooltip.getBoundingClientRect().right, parentWrapper.getBoundingClientRect().right);
 
     // qwe.innerHTML = text;
     const floatingRight = tooltip.getBoundingClientRect().right > parentWrapper.getBoundingClientRect().right ? tooltip.getBoundingClientRect().right - parentWrapper.getBoundingClientRect().right : 0;
     const vw = window.innerWidth;
-    console.log('floatingRight', floatingRight, offsetLeft - floatingRight);
-    // tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: auto`;
-    tooltip.style.cssText = vw < 380 ? `left: ${offsetLeft - floatingRight + 30}px` : `left: ${offsetLeft}px`;
+    // tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: auto`;;
+    tooltip.style.cssText = vw > 380 ? `left: ${offsetLeft - floatingRight}px` : `left: ${offsetLeft}px`;
 
     vh = tooltip.scrollHeight + 20;
     const top = vh > 100 && vw > 380 ? vh - offsetTop : vh - offsetTop - 2;
     const miunsTop = vh < 90 ? 0 : 8;
     tooltipBorder.style.cssText = `${vh < 90 ? `top: 17%;` : ''}`;
-    console.log(top, vh, vw, offsetTop, tooltip.getBoundingClientRect().right, parentWrapper.getBoundingClientRect().right, offsetLeft);
     const textRight = event.srcElement.localName === 'span' ? -32 : 0;
     const right = vw < tooltip.getBoundingClientRect().right ? `right: ${textRight + 5}px; left: auto` : 'right: auto';
     tooltip.style.cssText += `top: -${top - miunsTop}px; ${right}`;
@@ -449,12 +446,40 @@ function scrollFinished() {
 } */
 
 
+
+function onDragStart(event) {
+  console.log(event);
+  event
+    .dataTransfer
+    .setData('text/plain', event.target);
+}
+
+// $('#makeMeDraggable').draggable({
+//   containment: '#content',
+//   cursor: 'move',
+//   snap: '#content'
+// });
+
+
+
+
 $(window).scroll(function () {
   if (isFullyVisible(puzzle)) {
-    puzzles.forEach(item => item.classList.remove('moved'));
+    puzzles.forEach(item => {
+      item.classList.add('moved');
+      item.setAttribute('draggable', true);
+      $(item).draggable({
+        containment: 'parent',
+        cursor: 'move',
+        snap: '#content'
+      });
+    });
   }
   if (!isPartiallyVisible(puzzle)) {
-    puzzles.forEach(item => item.classList.add('moved'))
+    puzzles.forEach(item => {
+      item.classList.remove('moved');
+      item.removeAttribute('draggable');
+    })
   }
 });
 
