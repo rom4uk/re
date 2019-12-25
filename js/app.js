@@ -582,3 +582,63 @@ cleverDiv.innerHTML = `<strong>HTML</strong><em>Changed</em>`;
 cleverDiv.style.color = 'red';
 
 cleverDiv.querySelector('em').style.color = 'green';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const aboutContainer = document.querySelector('.about-item.first');
+const checkVisible = document.querySelector('.man-animation-anchor');
+let man = document.querySelector('.service-img');
+const startManTopPosition = checkVisible.getBoundingClientRect().top - man.getBoundingClientRect().height;
+
+function isVisible( node ) {
+  let elementBoundary = node.getBoundingClientRect();
+  let top = elementBoundary.top;
+  let bottom = elementBoundary.bottom;
+  let height = elementBoundary.height;
+  return ((top + height >= 0) && (height + window.innerHeight >= bottom));
+};
+function percentToValue (width, percent) {
+  return (width / 100) * percent
+}
+function scrollMan(node, startTopPosition) {
+  const manSpeed  = 0.7;
+  const scrollTop  = window.pageYOffset - node.getBoundingClientRect().top;
+  const manWidth  = node.offsetWidth;
+  const bodyWidth = document.body.offsetWidth;
+  node.style.left = (-manWidth + scrollTop * manSpeed) + 'px';
+  if (node.getBoundingClientRect().left <= 0) {
+    node.style.top = (startTopPosition + scrollTop * manSpeed) + 'px';
+  }
+}
+function scrollHandler() {
+  requestAnimationFrame( function () {
+    scrollMan(man, startManTopPosition)
+    if (man.getBoundingClientRect().left >= percentToValue(document.body.offsetWidth, 70)) {
+      aboutContainer.classList.remove('m-about-item');
+      (!isVisible(man)) && window.removeEventListener('scroll', scrollHandler);
+    } else {
+      aboutContainer.classList.add('m-about-item');
+    }
+  });
+}
+window.addEventListener('scroll', scrollHandler);
+
+
+
+
