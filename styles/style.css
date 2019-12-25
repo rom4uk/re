@@ -65,6 +65,7 @@ body {
   color: #444444;
   font-size: 18px;
   font-family: 'Avenir Next', monospace;
+  overflow-x: hidden;
 }
 
 img {
@@ -95,7 +96,7 @@ p {
 }
 
 .blured {
-  filter: blur(4px);
+  filter: blur(22px);
 }
 
 .wrapper {
@@ -165,7 +166,10 @@ header .logo a:hover img{
 .smaller {
   display: none;
 }
-
+/*.about {
+  position: relative;
+  overflow: hidden;
+}*/
 .about .wrapper {
   display: flex;
   justify-content: space-between;
@@ -183,7 +187,10 @@ header .logo a:hover img{
 .about .about-item {
   padding-top: 80px;
 }
+.about-item.first {
+  transition: all .5s;
 
+}
 .about .about-item h3 {
   font-family: 'Avenir Next';
   font-size: 26px;
@@ -209,6 +216,7 @@ header .logo a:hover img{
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  transition: all .4s;
 }
 
 .technologies img {
@@ -766,7 +774,9 @@ footer form .item button {
   .about .technologies {
     position: relative;
   }
-  
+  .m-about-item {
+    margin-bottom: 305px;
+  }
   .about .technologies .technologies-item figure {
     position: static;
   }
@@ -879,8 +889,14 @@ footer form .item button {
 
   .about .service-img {
     margin-top: 48px;
-    position: relative;
-    animation: serviceImg 2s ease-in infinite;
+    position: absolute;
+    /*top: 33%;*/
+    left: -500px;
+    width: 360px;
+    height: auto;
+    z-index: 1;
+
+    /*animation: serviceImg 2s ease-in infinite;*/
   }
 
   .about .service-img img {
