@@ -1,57 +1,57 @@
-const technologies1 = [
-  {
-    name: 'react',
-    __html: '<span>React JS</span> is a JavaScript library for building user interfaces. It was created and is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications, as it is optimal for fetching rapidly changing data that needs to be recorded. More on <a target="_blank" href="https://en.wikipedia.org/wiki/React_(web_framework)">Wikipedia</a>.'
-  },
-  {
-    name: 'html5',
-    __html: '<span>HTML</span> and <span>CSS</span> – this is what each and every site is built with. An industry-default markup language and a stylesheet language used to describe the presentation of a document written in HTML or XML'
-  },
-  {
-    name: 'el',
-    __html: '<span>El</span> is an analysis and feedback platform built to help you understand your users better. It gives you the complete visibility and the big picture on how to leverage your website’s user experience and increase both performance and conversion rates.'
-  },
-  {
-    name: 'hotjar',
-    __html: ' <span>Hotjar</span> is an analysis and feedback platform built to help you understand your users better. It gives you the complete visibility and the big picture on how to leverage your website’s user experience and increase both performance and conversion rates. More on <a target="_blank" href="https://www.hotjar.com/blog/what-is-hotjar/">Hotjar</a>.'
-  },
-  {
-    name: 'php',
-    __html: '<span>PHP</span> is an analysis and feedback platform built to help you understand your users better. It gives you the complete visibility and the big picture on how to leverage your website’s user experience and increase both performance and conversion rates.'
-  },
-  {
-    name: 'nodejs',
-    __html: '<span>Node.js</span> lets front-end developers use JavaScript to write code for servers (back-end) w/o involving another language. It is an open-source, cross-platform environment, created by Ryan Dahl and maintained by a community of individual developers. It represents a "JavaScript everywhere" paradigm, unifying web-application development around a single programming language, rather than different languages for server- and client-side code.'
-  },
-  {
-    name: 'magento',
-    __html: '<span>Magento</span> is an open-source e-commerce platform written in PHP. It is one of the most popular open e-commerce systems in the world. Up to this time, there are hundreds of thousands of businesses using including even big ones like Nike, Samsung, etc.'
-  },
-  {
-    name: 'flutter',
-    __html: '<span>Flutter</span> is an open-source UI software development kit created by Google in 2015. It allows to develop native-looking applications for Android and iOS from the same code base and does not require being an Android or iOS developer at all. Flutter apps are built using Dart, a simple object-oriented programming language.'
-  },
-  {
-    name: 'prestashop',
-    __html: '<span>PrestaShop</span> is a freely accessible open source e-commerce platform. It is written in the PHP programming language with support for the MySQL database management system. PrestaShop is currently used by 250,000 shops worldwide.'
-  },
-  {
-    name: 'ruby',
-    __html: '<span>Ruby</span> is an open source object-oriented programming language released back in 1995. It is known for being a flexible language allowing programmers to make modifications to its various parts. Ruby also allows the project to be set in a short time. All above makes it very popular. It is supported by a wide community of developers one of which is our local #pivorak in Lviv, UA.'
-  },
-  {
-    name: 'wordpress',
-    __html: '<span>WordPress</span> The most popular CMS in the world doesn’t require any introduction :)'
-  },
-  {
-    name: 'winwin',
-    __html: 'Win-win software development comprises various approaches to software development under which requirements and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customer/end user'
-  },
-  {
-    name: 'agile',
-    __html: 'Agile software development comprises various approaches to software development under which requirements and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customer/end user'
-  }
-];
+// const technologies1 = [
+//   {
+//     name: 'react',
+//     __html: '<span>React JS</span> is a JavaScript library for building user interfaces. It was created and is maintained by Facebook and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications, as it is optimal for fetching rapidly changing data that needs to be recorded. More on <a target="_blank" href="https://en.wikipedia.org/wiki/React_(web_framework)">Wikipedia</a>.'
+//   },
+//   {
+//     name: 'html5',
+//     __html: '<span>HTML</span> and <span>CSS</span> – this is what each and every site is built with. An industry-default markup language and a stylesheet language used to describe the presentation of a document written in HTML or XML'
+//   },
+//   {
+//     name: 'el',
+//     __html: '<span>El</span> is an analysis and feedback platform built to help you understand your users better. It gives you the complete visibility and the big picture on how to leverage your website’s user experience and increase both performance and conversion rates.'
+//   },
+//   {
+//     name: 'hotjar',
+//     __html: ' <span>Hotjar</span> is an analysis and feedback platform built to help you understand your users better. It gives you the complete visibility and the big picture on how to leverage your website’s user experience and increase both performance and conversion rates. More on <a target="_blank" href="https://www.hotjar.com/blog/what-is-hotjar/">Hotjar</a>.'
+//   },
+//   {
+//     name: 'php',
+//     __html: '<span>PHP</span> is an analysis and feedback platform built to help you understand your users better. It gives you the complete visibility and the big picture on how to leverage your website’s user experience and increase both performance and conversion rates.'
+//   },
+//   {
+//     name: 'nodejs',
+//     __html: '<span>Node.js</span> lets front-end developers use JavaScript to write code for servers (back-end) w/o involving another language. It is an open-source, cross-platform environment, created by Ryan Dahl and maintained by a community of individual developers. It represents a "JavaScript everywhere" paradigm, unifying web-application development around a single programming language, rather than different languages for server- and client-side code.'
+//   },
+//   {
+//     name: 'magento',
+//     __html: '<span>Magento</span> is an open-source e-commerce platform written in PHP. It is one of the most popular open e-commerce systems in the world. Up to this time, there are hundreds of thousands of businesses using including even big ones like Nike, Samsung, etc.'
+//   },
+//   {
+//     name: 'flutter',
+//     __html: '<span>Flutter</span> is an open-source UI software development kit created by Google in 2015. It allows to develop native-looking applications for Android and iOS from the same code base and does not require being an Android or iOS developer at all. Flutter apps are built using Dart, a simple object-oriented programming language.'
+//   },
+//   {
+//     name: 'prestashop',
+//     __html: '<span>PrestaShop</span> is a freely accessible open source e-commerce platform. It is written in the PHP programming language with support for the MySQL database management system. PrestaShop is currently used by 250,000 shops worldwide.'
+//   },
+//   {
+//     name: 'ruby',
+//     __html: '<span>Ruby</span> is an open source object-oriented programming language released back in 1995. It is known for being a flexible language allowing programmers to make modifications to its various parts. Ruby also allows the project to be set in a short time. All above makes it very popular. It is supported by a wide community of developers one of which is our local #pivorak in Lviv, UA.'
+//   },
+//   {
+//     name: 'wordpress',
+//     __html: '<span>WordPress</span> The most popular CMS in the world doesn’t require any introduction :)'
+//   },
+//   {
+//     name: 'winwin',
+//     __html: 'Win-win software development comprises various approaches to software development under which requirements and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customer/end user'
+//   },
+//   {
+//     name: 'fail-fast',
+//     __html: 'Agile software development comprises various approaches to software development under which requirements and solutions evolve through the collaborative effort of self-organizing and cross-functional teams and their customer/end user'
+//   }
+// ];
 let vh;
 
 $(document).ready(() => {
@@ -64,7 +64,7 @@ $(document).ready(() => {
     item.addEventListener('mouseleave', techItemLeave);
   });
   dotted.forEach(item => {
-    item.addEventListener('mouseover', techItemEnter);
+    item.addEventListener('mouseenter', techItemEnter);
     item.addEventListener('mouseleave', techItemLeave);
   });
 
@@ -75,18 +75,22 @@ $(document).ready(() => {
     const offsetTop = this.offsetTop;
     const offsetLeft = this.offsetLeft;
     // const qwe = event.currentTarget.querySelector('.qwe') || event.currentTarget.parentNode.querySelector('.qwe');
-    const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.parentNode.querySelector('.tooltip');
+    const tooltip = event.currentTarget.querySelector('.tooltip') || event.currentTarget.querySelector('.tooltip');
     const figureBefore = event.currentTarget.querySelector('.figure-before') || event.currentTarget.parentNode.querySelector('.figure-before');
     const tooltipBorder = event.currentTarget.querySelector('.tooltip-border') || event.currentTarget.parentNode.querySelector('.tooltip-border');
-    const text = technologies1.filter(item => item.name === this.getAttribute('data-name'))[0].__html;
+    // const text = technologies1.filter(item => item.name === this.getAttribute('data-name'))[0].__html;
     const parentWrapper = event.currentTarget.parentNode;
     // parentWrapper.style.cssText = `border: 1px solid red;`;
 
     // qwe.innerHTML = text;
+    console.log('before', tooltip.getBoundingClientRect().right, parentWrapper.getBoundingClientRect().right, offsetLeft)
+
     const floatingRight = tooltip.getBoundingClientRect().right > parentWrapper.getBoundingClientRect().right ? tooltip.getBoundingClientRect().right - parentWrapper.getBoundingClientRect().right : 0;
     const vw = window.innerWidth;
     // tooltip.style.cssText = window.innerWidth > 380 ? `width: 350px; left: ${offsetLeft}px` : `width: auto`;;
     tooltip.style.cssText = vw > 380 ? `left: ${offsetLeft - floatingRight}px` : `left: ${offsetLeft}px`;
+
+    console.log('after', floatingRight, tooltip.getBoundingClientRect().right, parentWrapper.getBoundingClientRect().right, offsetLeft)
 
     vh = tooltip.scrollHeight + 20;
     const top = vh > 100 && vw > 380 ? vh - offsetTop : vh - offsetTop - 2;
@@ -119,13 +123,13 @@ $(document).ready(() => {
   images.slick({
     infinite: true,
     speed: 600,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     arrows: true,
     focusOnSelect: true,
     pauseOnFocus: false,
-    centerMode: true,
-    centerPadding: '150px',
+    // centerMode: true,
+    // centerPadding: '120px',
     responsive: [
       {
         breakpoint: 886,
@@ -378,7 +382,8 @@ function checkInpits(arr) {
     if (item.value === '') {
       const div = document.createElement('div');
       div.classList.add('input-tooltip');
-      div.innerText = `Did you forget?`;
+      div.innerHTML = `Did you forget?
+      <div class="tooltip-border"></div>`;
       item.parentNode.insertAdjacentElement('beforeend', div);
       item.classList.add('typed');
       item.classList.add('invalid');
@@ -466,6 +471,9 @@ function onDragStart(event) {
 $(window).scroll(function () {
   if (isFullyVisible(puzzle)) {
     puzzles.forEach(item => {
+      const delay = Math.random();
+      item.style.cssText = `animation-delay: ${delay}s;`
+      item.classList.add('shake-slow');
       item.classList.add('moved');
       item.setAttribute('draggable', true);
       $(item).draggable({
@@ -477,11 +485,15 @@ $(window).scroll(function () {
   }
   if (!isPartiallyVisible(puzzle)) {
     puzzles.forEach(item => {
+      item.removeAttribute('style');
+      item.classList.remove('shake-slow');
       item.classList.remove('moved');
       item.removeAttribute('draggable');
     })
   }
 });
+
+
 
 
 
